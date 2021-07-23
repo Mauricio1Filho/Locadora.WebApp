@@ -13,9 +13,9 @@ namespace Vannon.Teste.WebApp.Domain.Services
             _reservaRepository = reservaRepository;
         }
 
-        public async Task<bool> RemoverReservaAsync(long idReserva)
+        public async Task<bool> RemoverReservaAsync(long idCliente)
         {
-            return await _reservaRepository.RemoverReservaAsync(idReserva);
+            return await _reservaRepository.RemoverReservaAsync(idCliente);
         }
 
         public async Task<bool> ReservarFilmeAsync(long idFilme, long idUsuario)

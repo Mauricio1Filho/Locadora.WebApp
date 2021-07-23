@@ -4,10 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Vannon.Teste.WebApp.Domain.Interfaces;
 using Vannon.Teste.WebApp.Domain.Repositories;
 using Vannon.Teste.WebApp.Domain.Services;
@@ -34,17 +30,18 @@ namespace Vannon.Teste.WebApp
                 options => options.UseSqlServer("name=ConnectionStrings:VannonDb"));
 
             services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<ILoginRepository, LoginRepository>();
             services.AddScoped<IFilmeRepository, FilmeRepository>();
             services.AddScoped<ILocacaoRepository, LocacaoRepository>();
             services.AddScoped<IReservaRepository, ReservaRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             services.AddScoped<IClienteService, ClienteService>();
+            services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IFilmeService, FilmeService>();
             services.AddScoped<ILocacaoService, LocacaoService>();
             services.AddScoped<IReservaService, ReservaService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +66,7 @@ namespace Vannon.Teste.WebApp
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Login}/{action=Index}/{id?}");
+
             });
         }
     }

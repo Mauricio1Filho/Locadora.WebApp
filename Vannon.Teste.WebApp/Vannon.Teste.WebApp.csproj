@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\Cliente.js" />
+    <Content Remove="wwwroot\js\Home.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\home.js" />
+    <None Include="wwwroot\js\cliente.js" />
+    <None Include="wwwroot\js\login.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
