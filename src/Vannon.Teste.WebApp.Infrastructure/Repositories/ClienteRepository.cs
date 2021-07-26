@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using Vannon.Teste.WebApp.Domain.Interfaces;
 using Vannon.Teste.WebApp.Domain.Models;
 using Vannon.Teste.WebApp.Domain.Repositories;
 using Vannon.Teste.WebApp.Infrastructure.Contexts;
