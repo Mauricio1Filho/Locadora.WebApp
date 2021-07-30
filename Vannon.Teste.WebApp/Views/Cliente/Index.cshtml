@@ -1,27 +1,46 @@
 ﻿@{
     ViewData["Title"] = "Cliente Page";
 }
-
 <div class="text-left col-md-6">
     <h2 class="display-6">Gerenciar Clientes</h2>
 </div>
-<form action="/Cliente" method="post" id="cliente">
-    <div>
-        <div class="form-group col-md-6">
-            <label for="inputEmail4">Nome do Cliente</label>
-            <input type="text" class="form-control" id="inputEmail4" placeholder="Nome" style="width:400px;">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputPassword4">Documento</label>
-            <input type="number" class="form-control" id="inputPassword4" placeholder="CPF" style="width:400px;">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputPassword4">Numero da Reserva</label>
-            <input type="number" class="form-control" id="inputPassword4" placeholder="Reserva" style="width:400px;">
-        </div>
+<!--Get Cliente-->
+<div style="float:right;">
+    <div class="form-group col-md-6">
+        <label>Id do Cliente</label>
+        <input id="inputIdCliente" type="number" class="form-control" placeholder="Informe o Id" style="width:130px;">
     </div>
     <div class="form-group col-md-6">
-        <button type="submit" class="btn btn-primary" style="margin-top:13px">Buscar</button>
-        <button type="submit" class="btn btn-secondary" style="margin-top:13px">Cadastrar</button>
+        <label>Nome do Cliente</label>
+        <input id="inputNome" type="text" class="form-control" placeholder="Nome" style="width:400px;">
     </div>
-</form>
+    <div class="form-group col-md-6">
+        <label>Documento</label>
+        <input id="inputCpf" type="number" class="form-control" placeholder="CPF" style="width:400px;">
+    </div>
+    <div class="form-group col-md-6">
+        <label>Reserva</label>
+        <input id="inputReserva" type="number" class="form-control" placeholder="Numero Reserva" style="width:400px;">
+    </div>
+    <div>
+        <button id="btnBuscar" type="submit" class="col-md-3 btn btn-primary" style="margin-top:13px;margin-left:15px;">Buscar</button>
+    </div>
+</div>
+<!--Post Cliente-->
+<div>
+    <div class="form-group col-md-6">
+        <label>Nome do Cliente</label>
+        <input id="inputNome" type="text" class="form-control" placeholder="Nome" style="width:400px;">
+    </div>
+    <div class="form-group col-md-6">
+        <label>Documento</label>
+        <input id="inputCpf" type="number" class="form-control" placeholder="CPF" style="width:400px;">
+    </div>
+</div>
+<div class="form-group col-md-6">
+    <button id="btnCadastrar" type="submit" class="btn btn-secondary" style="margin-top:13px">Cadastrar</button>
+</div>
+
+@section Scripts {
+    <script src="~/js/clientes.js"></script>
+}

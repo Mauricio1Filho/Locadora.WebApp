@@ -16,9 +16,9 @@ namespace Vannon.Teste.WebApp.Domain.Services
             _locacaoRepository = locacaoRepository;
         }
 
-        public async Task<bool> CriarReservaFilmeAsync(long clienteId, long filmeId)
+        public async Task<bool> CriarLocacaoFilmeAsync(long idCliente)
         {
-            return await _locacaoRepository.CriarReservaFilmeAsync(clienteId, filmeId);
+            return await _locacaoRepository.CriarLocacaoFilmeAsync(idCliente);
         }
     }
 }

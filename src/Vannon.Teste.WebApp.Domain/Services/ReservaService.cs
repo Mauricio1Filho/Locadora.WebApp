@@ -13,14 +13,14 @@ namespace Vannon.Teste.WebApp.Domain.Services
             _reservaRepository = reservaRepository;
         }
 
-        public async Task<bool> RemoverReservaAsync(long idCliente)
+        public async Task<bool> RemoverReservaAsync(long idFilme, long idLocacao)
         {
-            return await _reservaRepository.RemoverReservaAsync(idCliente);
+            return await _reservaRepository.RemoverReservaAsync(idFilme, idLocacao);
         }
 
-        public async Task<bool> ReservarFilmeAsync(long idFilme, long idUsuario)
+        public async Task<bool> ReservarFilmeAsync(long idFilme, long idLocacao)
         {
-            return await _reservaRepository.ReservarFilmeAsync(idFilme, idUsuario);
+            return await _reservaRepository.ReservarFilmeAsync(idFilme, idLocacao);
         }
 
     }

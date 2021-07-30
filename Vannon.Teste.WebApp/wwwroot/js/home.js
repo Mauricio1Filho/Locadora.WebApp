@@ -1,11 +1,27 @@
 ﻿$(document).ready(function () {
-    $("#btn1").click(function () {
-        window.location.href = "http://localhost:5000/Cliente"
+    $("#btn2").click(function () {
+        var inputIdCliente = $("#inputIdCliente").val();
+        const url = "api/Home/locacao"
+        console.log(inputIdCliente)
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: JSON.stringify({
+                idCliente: inputIdCliente,
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            success: function (data) {
+                if (data) {
+                    alert("Locacao feita com sucesso")
+                }
+                else {
+                    alert("Campos nao preenchidos corretamente")
+                }
+            }
+        });
     })
 });
 
-$(document).ready(function () {
-    $("#btn2").click(function () {
-        alert("Cadastrado com sucesso")
-    })
-});

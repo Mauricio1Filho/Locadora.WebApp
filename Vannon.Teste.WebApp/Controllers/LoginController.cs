@@ -6,7 +6,6 @@ namespace Vannon.Teste.WebApp.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly ILogger<LoginController> _logger;
 
         public ActionResult Index()
         {

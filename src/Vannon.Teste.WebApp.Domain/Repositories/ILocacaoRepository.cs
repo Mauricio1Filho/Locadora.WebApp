@@ -7,6 +7,6 @@ namespace Vannon.Teste.WebApp.Domain.Repositories
 {
     public interface ILocacaoRepository
     {
-        Task<bool> CriarReservaFilmeAsync(long clienteId, long filmeId);
+        Task<bool> CriarLocacaoFilmeAsync(long idCliente);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Threading.Tasks;
 using Vannon.Teste.WebApp.Domain.Repositories;
 using Vannon.Teste.WebApp.Infrastructure.Contexts;

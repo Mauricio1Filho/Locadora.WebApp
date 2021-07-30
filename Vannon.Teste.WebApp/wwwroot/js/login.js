@@ -1,7 +1,5 @@
 ﻿$(document).ready(function () {
     $("#btn1").click(function () {
-        document.querySelector("#inputEmail")
-        document.querySelector("#inputSenha")
         var inputEmail = $("#inputEmail").val();
         var inputSenha = $("#inputSenha").val();
         $.ajax({
@@ -20,7 +18,7 @@
                     window.location.href = "http://localhost:5000/Home"
                 }
                 else {
-                    alert("usuario ou senha invalido")
+
                 }
             }
         });

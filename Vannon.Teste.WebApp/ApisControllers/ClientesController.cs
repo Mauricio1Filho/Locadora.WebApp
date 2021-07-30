@@ -3,17 +3,14 @@ using System;
 using System.Threading.Tasks;
 using Vannon.Teste.WebApp.Domain.Interfaces;
 using Vannon.Teste.WebApp.Domain.Models;
-using Vannon.Teste.WebApp.Domain.Repositories;
 
 namespace Vannon.Teste.WebApp.ApisControllers
 {
     [Route("api/[Controller]")]
-    public class ClienteController : ControllerBase
+    public class ClientesController : ControllerBase
     {
         private readonly IClienteService _clienteService;
-        
-
-        public ClienteController(IClienteService clienteService)
+        public ClientesController(IClienteService clienteService)
         {
             _clienteService = clienteService;
         }
@@ -24,7 +21,7 @@ namespace Vannon.Teste.WebApp.ApisControllers
             try
             {
                 await _clienteService.CadastrarClientAsync(clienteModel);
-                return Ok();
+                return Ok(true);
             }
             catch (Exception ex)
             {
@@ -32,13 +29,13 @@ namespace Vannon.Teste.WebApp.ApisControllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{idCliente}")]
         public async Task<IActionResult> ClienteDelete(long idCliente)
         {
             try
             {
                 await _clienteService.RemoverClientAsync(idCliente);
-                return Ok();
+                return Ok(true);
             }
             catch (Exception ex)
             {
@@ -60,13 +57,13 @@ namespace Vannon.Teste.WebApp.ApisControllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("{idCliente}")]
         public async Task<IActionResult> ClienteGet(long idCliente)
         {
             try
             {
-                await _clienteService.BuscarClientAsync(idCliente);
-                return Ok();
+                var result = await _clienteService.BuscarClientAsync(idCliente);
+                return Ok(result);
             }
             catch (Exception ex)
             {

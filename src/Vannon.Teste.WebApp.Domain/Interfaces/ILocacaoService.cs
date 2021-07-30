@@ -4,6 +4,6 @@ namespace Vannon.Teste.WebApp.Domain.Interfaces
 {
     public interface ILocacaoService
     {
-        Task<bool> CriarReservaFilmeAsync(long clienteId, long filmeId);
+        Task<bool> CriarLocacaoFilmeAsync(long idCliente);
     }
 }

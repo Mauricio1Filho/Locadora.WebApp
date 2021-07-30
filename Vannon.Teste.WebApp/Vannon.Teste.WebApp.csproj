@@ -5,13 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\js\Cliente.js" />
+    <Content Remove="wwwroot\js\clientes.js" />
     <Content Remove="wwwroot\js\Home.js" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\js\home.js" />
-    <None Include="wwwroot\js\cliente.js" />
+    <None Include="wwwroot\js\clientes.js" />
     <None Include="wwwroot\js\login.js" />
   </ItemGroup>
 

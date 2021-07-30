@@ -8,20 +8,20 @@ namespace Vannon.Teste.WebApp.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<ReservaModel> builder)
         {
-           builder .HasKey(p => new { p.IdFilme, p.IdCliente });
+           builder .HasKey(p => new { p.IdFilme, p.IdLocacao });
 
             builder
                 .Property(p => p.IdFilme)
                 .IsRequired();
 
             builder
-                .Property(p => p.IdCliente)
+                .Property(p => p.IdLocacao)
                 .IsRequired();
 
             builder
-                .HasOne(p => p.Cliente)
+                .HasOne(p => p.Locacao)
                 .WithMany(p => p.Reservas)
-                .HasForeignKey(f => f.IdCliente);
+                .HasForeignKey(f => f.IdLocacao);
 
             builder
                 .HasOne(p => p.Filme)

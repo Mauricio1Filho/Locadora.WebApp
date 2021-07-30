@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Vannon.Teste.WebApp.Domain.Models;
 using Vannon.Teste.WebApp.Domain.Repositories;
 using Vannon.Teste.WebApp.Infrastructure.Contexts;
 
@@ -13,16 +14,16 @@ namespace Vannon.Teste.WebApp.Infrastructure.Repositories
             _mainContext = mainContext;
         }
 
-        public async Task<bool> RemoverReservaAsync(long IdCliente)
+        public async Task<bool> RemoverReservaAsync(long idFilme, long idLocacao)
         {
-            var result = await _mainContext.Reservas.FindAsync(IdCliente);
+            var result = await _mainContext.Reservas.FindAsync(idFilme, idLocacao);
             _mainContext.Remove(result);
             return true;
         }
 
-        public async Task<bool> ReservarFilmeAsync(long idFilme, long idUsuario)
+        public async Task<bool> ReservarFilmeAsync(long idFilme, long idLocacao)
         {
-            await _mainContext.Reservas.AddRangeAsync();
+            await _mainContext.Reservas.AddAsync(new ReservaModel {IdFilme = idFilme , IdLocacao = idLocacao });
             _mainContext.SaveChanges();
             return true;
         }

@@ -6,33 +6,29 @@
 <div class="text-left col-md-6">
     <h2 class="display-6">Reserva de Filmes</h2>
 </div>
-
 <div>
     <div class="form-group col-md-6">
-        <label for="inputEmail4">Nome do Cliente</label>
-        <input type="text" class="form-control" id="inputEmail4" placeholder="Nome" style="width:400px;">
+        <label>Id Cliente</label>
+        <input id="inputIdCliente" type="number" class="form-control" placeholder="Nome" style="width:400px;">
     </div>
     <div class="form-group col-md-6">
-        <label for="inputPassword4">Documento</label>
-        <input type="text" class="form-control" id="inputPassword4" placeholder="CPF" style="width:400px;">
+        <label>Documento</label>
+        <input id="inputCpf" type="text" class="form-control"  placeholder="CPF" style="width:400px;">
     </div>
 </div>
 <div class="form-row align-items-center col-md-6">
     <div class="col-auto my-1">
-        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"></label>
-        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        <select id="filmesSelector" class="custom-select mr-sm-2">
             <option selected>Filmes</option>
-            <option value="1">Viuva Negra</option>
-            <option value="2">Space Jam: Um Novo Legado</option>
+            <option value="1">Viuva Negra 1</option>
+            <option value="2">Space Jam: Um Novo Legado 2</option>
         </select>
     </div>
 </div>
-
 <div class="form-group col-md-6">
     <button id="btn2" type="submit" class="btn btn-primary" style="margin-top:13px">Reservar</button>
     <button id="btn1" type="submit" class="btn btn-secondary" style="margin-top:13px">Cadastrar Cliente</button>
 </div>
-
 
 @section Scripts {
     <script src="~/js/home.js"></script>

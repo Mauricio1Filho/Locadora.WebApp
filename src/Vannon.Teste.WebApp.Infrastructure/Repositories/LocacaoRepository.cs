@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Vannon.Teste.WebApp.Domain.Interfaces;
+﻿using System.Threading.Tasks;
+using Vannon.Teste.WebApp.Domain.Models;
 using Vannon.Teste.WebApp.Domain.Repositories;
 using Vannon.Teste.WebApp.Infrastructure.Contexts;
 
@@ -16,9 +13,10 @@ namespace Vannon.Teste.WebApp.Infrastructure.Repositories
         {
             _mainContext = mainContext;
         }
-        public async Task<bool> CriarReservaFilmeAsync(long clienteId, long filmeId)
+
+        public async Task<bool> CriarLocacaoFilmeAsync(long idCliente)
         {
-            _mainContext.Locacoes.AddRange();
+            await  _mainContext.Locacoes.AddAsync (new LocacaoModel {IdCliente = idCliente });
             await _mainContext.SaveChangesAsync();
             return true; 
         }

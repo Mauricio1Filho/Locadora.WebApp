@@ -2,7 +2,6 @@
 using System;
 using System.Threading.Tasks;
 using Vannon.Teste.WebApp.Domain.Interfaces;
-using Vannon.Teste.WebApp.Domain.Repositories;
 
 namespace Vannon.Teste.WebApp.ApisControllers
 {
@@ -20,12 +19,12 @@ namespace Vannon.Teste.WebApp.ApisControllers
             _filmeService = filmeService;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> ReservaPost([FromBody] long idUsuario, long idReserva)
+        [HttpPost("reserva")]
+        public async Task<IActionResult> ReservaPost([FromBody] long idFilme, long idLocacao)
         {
             try
             {
-               await _reservaService.ReservarFilmeAsync(idUsuario, idReserva);
+               await _reservaService.ReservarFilmeAsync(idFilme, idLocacao);
                 return Ok();
             }
             catch (Exception ex)
@@ -35,11 +34,11 @@ namespace Vannon.Teste.WebApp.ApisControllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> ReservaDelete(long idReserva)
+        public async Task<IActionResult> ReservaDelete(long idFilme, long idLocacao)
         {
             try
             {
-               await _reservaService.RemoverReservaAsync(idReserva);
+               await _reservaService.RemoverReservaAsync(idFilme , idLocacao);
                 return Ok();
             }
             catch (Exception ex)
@@ -49,11 +48,11 @@ namespace Vannon.Teste.WebApp.ApisControllers
         }
 
         [HttpPost("locacao")]
-        public async Task<IActionResult> LocacaoPost([FromBody] long idFilme ,long idReserva)
+        public async Task<IActionResult> LocacaoPost([FromBody] long idCliente)
         {
             try
             {
-                await _locacaoService.CriarReservaFilmeAsync(idFilme , idReserva);
+                await _locacaoService.CriarLocacaoFilmeAsync(idCliente);
                 return Ok();
             }
             catch (Exception ex)
