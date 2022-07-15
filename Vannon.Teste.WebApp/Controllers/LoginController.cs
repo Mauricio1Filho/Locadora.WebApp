@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Vannon.Teste.WebApp.Controllers
 {
     public class LoginController : Controller
     {
 
-        public ActionResult Index()
+        public ActionResult Login()
         {
             return View();
         }
@@ -31,7 +30,7 @@ namespace Vannon.Teste.WebApp.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Login));
             }
             catch
             {
@@ -52,7 +51,7 @@ namespace Vannon.Teste.WebApp.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Login));
             }
             catch
             {
@@ -73,7 +72,7 @@ namespace Vannon.Teste.WebApp.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Login));
             }
             catch
             {

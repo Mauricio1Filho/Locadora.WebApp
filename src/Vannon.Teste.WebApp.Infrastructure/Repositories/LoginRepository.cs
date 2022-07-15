@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using Vannon.Teste.WebApp.Domain.Models;
 using Vannon.Teste.WebApp.Domain.Repositories;
 using Vannon.Teste.WebApp.Infrastructure.Contexts;
 
@@ -14,15 +15,13 @@ namespace Vannon.Teste.WebApp.Infrastructure.Repositories
             _mainContext = mainContext;
         }
 
-        public async Task<bool> LogarAsync(string usuario, string senha)
+        public async Task<UsuarioModel> LogarAsync(string usuario, string senha)
         {
             if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(senha))
             {
-                var result = await _mainContext.Usuarios.FirstOrDefaultAsync(o => o.Login.Equals(usuario) && o.Senha.Equals(senha));
-                if (result != null)
-                    return true;
+                 return await _mainContext.Usuarios.FirstOrDefaultAsync(o => o.Login.Equals(usuario) && o.Senha.Equals(senha));
             }
-            return false;
+            return default;
         }
     }
 }

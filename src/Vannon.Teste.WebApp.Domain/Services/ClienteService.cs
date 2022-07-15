@@ -24,6 +24,11 @@ namespace Vannon.Teste.WebApp.Domain.Services
             return await _clienteRepository.BuscarClientAsync(idCliente);
         }
 
+        public async Task<ClienteModel> BuscarClientCpfAsync(string cpf)
+        {
+            return await _clienteRepository.BuscarClientCpfAsync(cpf);
+        }
+
         public async Task<bool> CadastrarClientAsync(ClienteModel clienteModel)
         {
             return await _clienteRepository.CadastrarClientAsync(clienteModel);

@@ -26,15 +26,19 @@ namespace Vannon.Teste.WebApp
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-            services.AddDbContext<MainContext>(
-                options => options.UseSqlServer("name=ConnectionStrings:VannonDb"));
+            var connection = Configuration["ConnectionStrings:VannonDb"];
+            services.AddDbContext<MainContext>(options =>
+                options.UseMySql(connection));
 
-            services.AddScoped<IClienteRepository, ClienteRepository>();
-            services.AddScoped<ILoginRepository, LoginRepository>();
-            services.AddScoped<IFilmeRepository, FilmeRepository>();
-            services.AddScoped<ILocacaoRepository, LocacaoRepository>();
-            services.AddScoped<IReservaRepository, ReservaRepository>();
-            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddDbContext<MainContext>(
+                options => options.UseMySql("ConnectionStrings:VannonDb"));
+
+            services.AddTransient<IClienteRepository, ClienteRepository>();
+            services.AddTransient<ILoginRepository, LoginRepository>();
+            services.AddTransient<IFilmeRepository, FilmeRepository>();
+            services.AddTransient<ILocacaoRepository, LocacaoRepository>();
+            services.AddTransient<IReservaRepository, ReservaRepository>();
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<ILoginService, LoginService>();
@@ -61,7 +65,7 @@ namespace Vannon.Teste.WebApp
             {
                 endpoints.MapControllerRoute(
                     name: "Login",
-                    pattern: "{controller=Login}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Login}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "Home",

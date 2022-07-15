@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
+using Vannon.Teste.WebApp.Domain.Models;
 
 namespace Vannon.Teste.WebApp.Domain.Interfaces
 {
     public interface ILoginService 
     {
-        Task<bool> LogarAsync(string usuario, string senha);
+        Task<UsuarioModel> LogarAsync(string usuario, string senha);
     }
 }

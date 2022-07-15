@@ -57,18 +57,6 @@ namespace Vannon.Teste.WebApp.ApisControllers
             }
         }
 
-        [HttpGet("{idCliente}")]
-        public async Task<IActionResult> ClienteGet(long idCliente)
-        {
-            try
-            {
-                var result = await _clienteService.BuscarClientAsync(idCliente);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.ToString());
-            }
-        }
+        
     }
 }

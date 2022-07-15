@@ -26,11 +26,23 @@ namespace Vannon.Teste.WebApp.Infrastructure.Repositories
             return await _mainContext.Clientes.FirstOrDefaultAsync(o => o.IdCliente == idCliente);
         }
 
+        public async Task<ClienteModel> BuscarClientCpfAsync(string cpf)
+        {
+            return await _mainContext.Clientes.FirstOrDefaultAsync(o => o.Cpf == cpf);
+        }
+
         public async Task<bool> CadastrarClientAsync(ClienteModel clienteModel)
         {
-            await _mainContext.Clientes.AddAsync(clienteModel);
-            _mainContext.SaveChanges();
-            return true;
+            if (clienteModel != null && clienteModel.Nome == string.Empty && clienteModel.Cpf == string.Empty)
+            {
+                return false;
+            }
+            else
+            {
+                await _mainContext.Clientes.AddAsync(clienteModel);
+                _mainContext.SaveChanges();
+                return true;
+            }
         }
 
         public async Task<bool> RemoverClientAsync(long idCliente)

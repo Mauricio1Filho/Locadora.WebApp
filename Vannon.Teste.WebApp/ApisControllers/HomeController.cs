@@ -11,15 +11,17 @@ namespace Vannon.Teste.WebApp.ApisControllers
         private readonly IReservaService _reservaService;
         private readonly ILocacaoService _locacaoService;
         private readonly IFilmeService _filmeService;
+        private readonly IClienteService _clienteService;
 
-        public HomeController(IReservaService reservaService, ILocacaoService locacaoService, IFilmeService filmeService)
+        public HomeController(IReservaService reservaService, ILocacaoService locacaoService, IFilmeService filmeService, IClienteService clienteService)
         {
             _reservaService = reservaService;
             _locacaoService = locacaoService;
             _filmeService = filmeService;
+            _clienteService = clienteService;
         }
 
-        [HttpPost("reserva")]
+        [HttpPost("reservaPost")]
         public async Task<IActionResult> ReservaPost([FromBody] long idFilme, long idLocacao)
         {
             try
@@ -47,13 +49,13 @@ namespace Vannon.Teste.WebApp.ApisControllers
             }
         }
 
-        [HttpPost("locacao")]
+        [HttpPost("locacaoPost")]
         public async Task<IActionResult> LocacaoPost([FromBody] long idCliente)
         {
             try
             {
-                await _locacaoService.CriarLocacaoFilmeAsync(idCliente);
-                return Ok();
+               var result =  await _locacaoService.CriarLocacaoFilmeAsync(idCliente);
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -68,6 +70,20 @@ namespace Vannon.Teste.WebApp.ApisControllers
             {
                 await _filmeService.BuscarFilmeAsync(idFilme);
                 return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
+        [HttpGet("cpf/{cpf}")]
+        public async Task<IActionResult> BuscarClientCpfAsync(string cpf)
+        {
+            try
+            {
+                var result = await _clienteService.BuscarClientCpfAsync(cpf);
+                return Ok(result);
             }
             catch (Exception ex)
             {

@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vannon.Teste.WebApp.Infrastructure.Contexts;
 
@@ -15,29 +14,27 @@ namespace Vannon.Teste.WebApp.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.8")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "3.1.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Vannon.Teste.WebApp.Domain.Models.ClienteModel", b =>
                 {
                     b.Property<long>("IdCliente")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Cpf")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("varchar(20) CHARACTER SET utf8mb4")
+                        .HasMaxLength(20);
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.HasKey("IdCliente");
 
@@ -48,22 +45,21 @@ namespace Vannon.Teste.WebApp.Infrastructure.Migrations
                 {
                     b.Property<long>("IdFilme")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("IdGenero")
                         .HasColumnType("bigint");
 
                     b.Property<double>("Preco")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.HasKey("IdFilme");
 
@@ -75,7 +71,7 @@ namespace Vannon.Teste.WebApp.Infrastructure.Migrations
                         new
                         {
                             IdFilme = 1L,
-                            DataCriacao = new DateTime(2021, 7, 22, 4, 9, 25, 647, DateTimeKind.Local).AddTicks(7803),
+                            DataCriacao = new DateTime(2022, 7, 5, 15, 50, 22, 724, DateTimeKind.Local).AddTicks(5919),
                             IdGenero = 3L,
                             Preco = 14.99,
                             Titulo = "Viuva Negra"
@@ -83,7 +79,7 @@ namespace Vannon.Teste.WebApp.Infrastructure.Migrations
                         new
                         {
                             IdFilme = 2L,
-                            DataCriacao = new DateTime(2021, 7, 22, 4, 9, 25, 647, DateTimeKind.Local).AddTicks(8648),
+                            DataCriacao = new DateTime(2022, 7, 5, 15, 50, 22, 724, DateTimeKind.Local).AddTicks(6393),
                             IdGenero = 2L,
                             Preco = 19.989999999999998,
                             Titulo = "Space Jam: Um Novo Legado"
@@ -94,15 +90,14 @@ namespace Vannon.Teste.WebApp.Infrastructure.Migrations
                 {
                     b.Property<long>("IdGenero")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("IdGenero");
 
@@ -112,25 +107,25 @@ namespace Vannon.Teste.WebApp.Infrastructure.Migrations
                         new
                         {
                             IdGenero = 1L,
-                            DataCriacao = new DateTime(2021, 7, 22, 4, 9, 25, 644, DateTimeKind.Local).AddTicks(5071),
+                            DataCriacao = new DateTime(2022, 7, 5, 15, 50, 22, 721, DateTimeKind.Local).AddTicks(4917),
                             Descricao = "Terror"
                         },
                         new
                         {
                             IdGenero = 2L,
-                            DataCriacao = new DateTime(2021, 7, 22, 4, 9, 25, 645, DateTimeKind.Local).AddTicks(8390),
+                            DataCriacao = new DateTime(2022, 7, 5, 15, 50, 22, 722, DateTimeKind.Local).AddTicks(8387),
                             Descricao = "Comedia"
                         },
                         new
                         {
                             IdGenero = 3L,
-                            DataCriacao = new DateTime(2021, 7, 22, 4, 9, 25, 645, DateTimeKind.Local).AddTicks(8418),
+                            DataCriacao = new DateTime(2022, 7, 5, 15, 50, 22, 722, DateTimeKind.Local).AddTicks(8423),
                             Descricao = "Acao"
                         },
                         new
                         {
                             IdGenero = 4L,
-                            DataCriacao = new DateTime(2021, 7, 22, 4, 9, 25, 645, DateTimeKind.Local).AddTicks(8421),
+                            DataCriacao = new DateTime(2022, 7, 5, 15, 50, 22, 722, DateTimeKind.Local).AddTicks(8427),
                             Descricao = "Drama"
                         });
                 });
@@ -139,11 +134,10 @@ namespace Vannon.Teste.WebApp.Infrastructure.Migrations
                 {
                     b.Property<long>("IdLocacao")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<long>("IdCliente")
                         .HasColumnType("bigint");
@@ -160,12 +154,17 @@ namespace Vannon.Teste.WebApp.Infrastructure.Migrations
                     b.Property<long>("IdFilme")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("IdCliente")
+                    b.Property<long>("IdLocacao")
                         .HasColumnType("bigint");
 
-                    b.HasKey("IdFilme", "IdCliente");
+                    b.Property<long?>("ClienteModelIdCliente")
+                        .HasColumnType("bigint");
 
-                    b.HasIndex("IdCliente");
+                    b.HasKey("IdFilme", "IdLocacao");
+
+                    b.HasIndex("ClienteModelIdCliente");
+
+                    b.HasIndex("IdLocacao");
 
                     b.ToTable("Reservas");
                 });
@@ -174,26 +173,25 @@ namespace Vannon.Teste.WebApp.Infrastructure.Migrations
                 {
                     b.Property<long>("IdUsuario")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Login")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.HasKey("IdUsuario");
 
@@ -203,7 +201,7 @@ namespace Vannon.Teste.WebApp.Infrastructure.Migrations
                         new
                         {
                             IdUsuario = 1L,
-                            DataCriacao = new DateTime(2021, 7, 22, 4, 9, 25, 647, DateTimeKind.Local).AddTicks(4187),
+                            DataCriacao = new DateTime(2022, 7, 5, 15, 50, 22, 724, DateTimeKind.Local).AddTicks(2884),
                             Login = "admin@admin.com",
                             Nome = "Administrador",
                             Senha = "admin"
@@ -217,8 +215,6 @@ namespace Vannon.Teste.WebApp.Infrastructure.Migrations
                         .HasForeignKey("IdGenero")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Genero");
                 });
 
             modelBuilder.Entity("Vannon.Teste.WebApp.Domain.Models.LocacaoModel", b =>
@@ -228,17 +224,13 @@ namespace Vannon.Teste.WebApp.Infrastructure.Migrations
                         .HasForeignKey("IdCliente")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Cliente");
                 });
 
             modelBuilder.Entity("Vannon.Teste.WebApp.Domain.Models.ReservaModel", b =>
                 {
-                    b.HasOne("Vannon.Teste.WebApp.Domain.Models.ClienteModel", "Cliente")
+                    b.HasOne("Vannon.Teste.WebApp.Domain.Models.ClienteModel", null)
                         .WithMany("Reservas")
-                        .HasForeignKey("IdCliente")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClienteModelIdCliente");
 
                     b.HasOne("Vannon.Teste.WebApp.Domain.Models.FilmeModel", "Filme")
                         .WithMany("Reservas")
@@ -246,26 +238,11 @@ namespace Vannon.Teste.WebApp.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Cliente");
-
-                    b.Navigation("Filme");
-                });
-
-            modelBuilder.Entity("Vannon.Teste.WebApp.Domain.Models.ClienteModel", b =>
-                {
-                    b.Navigation("Locacoes");
-
-                    b.Navigation("Reservas");
-                });
-
-            modelBuilder.Entity("Vannon.Teste.WebApp.Domain.Models.FilmeModel", b =>
-                {
-                    b.Navigation("Reservas");
-                });
-
-            modelBuilder.Entity("Vannon.Teste.WebApp.Domain.Models.GeneroModel", b =>
-                {
-                    b.Navigation("Filmes");
+                    b.HasOne("Vannon.Teste.WebApp.Domain.Models.LocacaoModel", "Locacao")
+                        .WithMany("Reservas")
+                        .HasForeignKey("IdLocacao")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

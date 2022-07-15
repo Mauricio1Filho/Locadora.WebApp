@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $("#btn1").click(function () {
+    $("#btnEntrar").click(function () {
         var inputEmail = $("#inputEmail").val();
         var inputSenha = $("#inputSenha").val();
         $.ajax({
@@ -14,12 +14,10 @@
                 'Content-Type': 'application/json'
             },
             success: function (data) {
-                if (data) {
-                    window.location.href = "http://localhost:5000/Home"
-                }
-                else {
-
-                }
+                window.location.href = "/Home";
+            },
+            error: function (data) {
+                alert("Credenciais invalidas");
             }
         });
     })
