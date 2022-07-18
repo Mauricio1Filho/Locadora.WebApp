@@ -6,14 +6,14 @@ using Vannon.Teste.WebApp.Domain.Interfaces;
 namespace Vannon.Teste.WebApp.ApisControllers
 {
     [Route("api/[Controller]")]
-    public class HomeController : ControllerBase
+    public class BookingController : ControllerBase
     {
         private readonly IReservaService _reservaService;
         private readonly ILocacaoService _locacaoService;
         private readonly IFilmeService _filmeService;
         private readonly IClienteService _clienteService;
 
-        public HomeController(IReservaService reservaService, ILocacaoService locacaoService, IFilmeService filmeService, IClienteService clienteService)
+        public BookingController(IReservaService reservaService, ILocacaoService locacaoService, IFilmeService filmeService, IClienteService clienteService)
         {
             _reservaService = reservaService;
             _locacaoService = locacaoService;
@@ -21,8 +21,8 @@ namespace Vannon.Teste.WebApp.ApisControllers
             _clienteService = clienteService;
         }
 
-        [HttpPost("reservaPost")]
-        public async Task<IActionResult> ReservaPost([FromBody] long idFilme, long idLocacao)
+        [HttpPost("reserva")]
+        public async Task<IActionResult> ReservarFilmeAsync([FromBody] long idFilme, long idLocacao)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace Vannon.Teste.WebApp.ApisControllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> ReservaDelete(long idFilme, long idLocacao)
+        public async Task<IActionResult> RemoverReservaAsync(long idFilme, long idLocacao)
         {
             try
             {
@@ -49,8 +49,8 @@ namespace Vannon.Teste.WebApp.ApisControllers
             }
         }
 
-        [HttpPost("locacaoPost")]
-        public async Task<IActionResult> LocacaoPost([FromBody] long idCliente)
+        [HttpPost("locacao")]
+        public async Task<IActionResult> CriarLocacaoFilmeAsync([FromBody] long idCliente)
         {
             try
             {
@@ -64,12 +64,12 @@ namespace Vannon.Teste.WebApp.ApisControllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> FilmeGet(long idFilme)
+        public async Task<IActionResult> BuscarFilmeAsync(long idFilme)
         {
             try
             {
-                await _filmeService.BuscarFilmeAsync(idFilme);
-                return Ok();
+               var result = await _filmeService.BuscarFilmeAsync(idFilme);
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -83,7 +83,9 @@ namespace Vannon.Teste.WebApp.ApisControllers
             try
             {
                 var result = await _clienteService.BuscarClientCpfAsync(cpf);
-                return Ok(result);
+                if(result != null)
+                    return Ok(result);
+                return BadRequest("CPF não encontrado");
             }
             catch (Exception ex)
             {

@@ -2,7 +2,7 @@
     $("#btnLocar").click(function () {
         var inputIdCliente = $("#inputIdCliente").val();
         var idFilme = $("#idFilme").val();
-        const url = "api/Home/locacaoPost"
+        const url = "api/Booking/locacaoPost"
         $.ajax({
             type: "POST",
             url: url,
@@ -26,7 +26,7 @@
 $(document).ready(function () {
     $("#btnSearch").click(function () {
         var inputCpf = $("#inputCpf").val();
-        const url = "api/Home/cpf/" + inputCpf
+        const url = "api/Booking/cpf/" + inputCpf
         $.ajax({
             type: "GET",
             url: url,

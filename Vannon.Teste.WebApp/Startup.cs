@@ -55,6 +55,8 @@ namespace Vannon.Teste.WebApp
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseDefaultFiles();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -62,18 +64,10 @@ namespace Vannon.Teste.WebApp
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
-            {
+            {             
                 endpoints.MapControllerRoute(
-                    name: "Login",
-                    pattern: "{controller=Login}/{action=Login}/{id?}");
-
-                endpoints.MapControllerRoute(
-                    name: "Home",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-                endpoints.MapControllerRoute(
-                    name: "Clientes",
-                    pattern: "{controller=Clientes}/{action=Index}/{id?}");
+                    name: "Default",
+                    pattern: "{controller=Login}/{action=Index}");
             });
         }
     }

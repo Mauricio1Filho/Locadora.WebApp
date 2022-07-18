@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Vannon.Teste.WebApp.Controllers
 {
-    public class HomeController : Controller
+    public class BookingController : Controller
     {
         // GET: HomeController
         public ActionResult Index()

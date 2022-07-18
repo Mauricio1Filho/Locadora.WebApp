@@ -1,17 +1,17 @@
-<!doctype html>
-<html lang="en">
+@{
+    ViewData["Title"] = "Login Page";
+}
 <head>
     <title>Locadora</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/social-media-icons.css">
-
 </head>
 <body class="img js-fullheight bg-image">
     <section class="ftco-section">
@@ -25,9 +25,9 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
                         <h3 class="mb-4 text-center">Login</h3>
-                        <form action="#" class="signin-form">
+                        <div class="signin-form">
                             <div class="form-group">
-                                <input id="inputEmail"type="text" class="form-control" placeholder="Email" required>
+                                <input id="inputEmail" type="text" class="form-control" placeholder="Email" required>
                             </div>
                             <div class="form-group">
                                 <input id="inputSenha" type="password" class="form-control" placeholder="Password" required>
@@ -48,7 +48,7 @@
                                     <a href="#" style="color: #fff">Forgot Password</a>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                         <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
                         <div style="display: flex; flex-wrap: wrap-reverse;justify-content:space-between;">
                             <a href="https://facebook.com" target="_blank"><span class="fa fa-facebook"></span></a>
@@ -67,4 +67,3 @@
     <script src="js/main.js"></script>
     <script src="~/js/login.js"></script>
 </body>
-</html>

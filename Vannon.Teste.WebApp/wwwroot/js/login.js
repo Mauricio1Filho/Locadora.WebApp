@@ -1,10 +1,10 @@
 ﻿$(document).ready(function () {
     $("#btnEntrar").click(function () {
         var inputEmail = $("#inputEmail").val();
-        var inputSenha = $("#inputSenha").val();
+        var inputSenha = $("#inputSenha").val();        
         $.ajax({
             type: "POST",
-            url: "api/Login",
+            url: "login/logar",
             data: JSON.stringify({
                 login: inputEmail,
                 senha: inputSenha
@@ -14,10 +14,10 @@
                 'Content-Type': 'application/json'
             },
             success: function (data) {
-                window.location.href = "/Home";
+                window.location.href = "/booking";
             },
             error: function (data) {
-                alert("Credenciais invalidas");
+                alert("Email ou Senha Inválido");
             }
         });
     })

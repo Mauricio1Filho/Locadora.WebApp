@@ -17,9 +17,10 @@ namespace Vannon.Teste.WebApp.Infrastructure.Repositories
 
         public async Task<UsuarioModel> LogarAsync(string usuario, string senha)
         {
+
             if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(senha))
             {
-                 return await _mainContext.Usuarios.FirstOrDefaultAsync(o => o.Login.Equals(usuario) && o.Senha.Equals(senha));
+                return await _mainContext.Usuarios.FirstOrDefaultAsync(o => o.Login.Equals(usuario) && o.Senha.Equals(senha));                
             }
             return default;
         }

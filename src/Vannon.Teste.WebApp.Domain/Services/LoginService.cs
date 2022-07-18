@@ -17,7 +17,7 @@ namespace Vannon.Teste.WebApp.Domain.Services
 
         public async Task<UsuarioModel> LogarAsync(string usuario, string senha)
         {
-            return await _loginRepository.LogarAsync(usuario ,senha);
+            return await _loginRepository.LogarAsync(usuario, senha);
         }
     }
 }

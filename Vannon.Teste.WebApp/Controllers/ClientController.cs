@@ -4,23 +4,34 @@ using System.Threading.Tasks;
 using Vannon.Teste.WebApp.Domain.Interfaces;
 using Vannon.Teste.WebApp.Domain.Models;
 
-namespace Vannon.Teste.WebApp.ApisControllers
+namespace Vannon.Teste.WebApp.Controllers
 {
-    [Route("api/[Controller]")]
-    public class ClientesController : ControllerBase
+    public class ClientController : Controller
     {
         private readonly IClienteService _clienteService;
-        public ClientesController(IClienteService clienteService)
+        public ClientController(IClienteService clienteService)
         {
             _clienteService = clienteService;
         }
 
+        // GET: ClienteController
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        // GET: ClienteController/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public async Task<IActionResult> ClientePost([FromBody] ClienteModel clienteModel)
+        public IActionResult CadastrarClientAsync([FromBody] ClienteModel clienteModel)
         {
             try
             {
-                await _clienteService.CadastrarClientAsync(clienteModel);
+                _clienteService.CadastrarClientAsync(clienteModel);
                 return Ok(true);
             }
             catch (Exception ex)
@@ -30,7 +41,7 @@ namespace Vannon.Teste.WebApp.ApisControllers
         }
 
         [HttpDelete("{idCliente}")]
-        public async Task<IActionResult> ClienteDelete(long idCliente)
+        public async Task<IActionResult> RemoverClientAsync(long idCliente)
         {
             try
             {
@@ -44,7 +55,7 @@ namespace Vannon.Teste.WebApp.ApisControllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> ClienteUpdate([FromBody] ClienteModel clienteModel)
+        public async Task<IActionResult> AtualizarClientAsync([FromBody] ClienteModel clienteModel)
         {
             try
             {
@@ -56,7 +67,5 @@ namespace Vannon.Teste.WebApp.ApisControllers
                 return BadRequest(ex.ToString());
             }
         }
-
-        
     }
 }

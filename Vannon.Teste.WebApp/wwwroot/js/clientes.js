@@ -4,7 +4,7 @@
         var inputCpf = $("#inputCpf").val();
         $.ajax({
             type: "POST",
-            url: "api/Clientes",
+            url: "api/Client",
             data: JSON.stringify({
                 nome: inputNome,
                 cpf: inputCpf
