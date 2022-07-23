@@ -8,24 +8,22 @@ namespace Vannon.Teste.WebApp.Controllers
 {
     public class ClientController : Controller
     {
+        #region Views
+        public ActionResult Index()
+        {
+            return View();
+        }
+        #endregion
+
+        #region Injections
         private readonly IClienteService _clienteService;
         public ClientController(IClienteService clienteService)
         {
             _clienteService = clienteService;
         }
+        #endregion        
 
-        // GET: ClienteController
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: ClienteController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
+        #region Endpoints
         [HttpPost]
         public IActionResult CadastrarClientAsync([FromBody] ClienteModel clienteModel)
         {
@@ -67,5 +65,6 @@ namespace Vannon.Teste.WebApp.Controllers
                 return BadRequest(ex.ToString());
             }
         }
+        #endregion
     }
 }

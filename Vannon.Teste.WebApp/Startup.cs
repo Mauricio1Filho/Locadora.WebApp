@@ -13,10 +13,17 @@ using Vannon.Teste.WebApp.Infrastructure.Repositories;
 namespace Vannon.Teste.WebApp
 {
     public class Startup
-    {
-        public Startup(IConfiguration configuration)
+    {        
+        public Startup(IHostEnvironment hostEnvironment, IConfiguration configuration)
         {
             Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+               .SetBasePath(hostEnvironment.ContentRootPath)
+               .AddJsonFile("appsettings.json", true, true)
+               .AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, false)
+               .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }

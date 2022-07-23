@@ -1,83 +1,107 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
+using Vannon.Teste.WebApp.Domain.Interfaces;
+
 
 namespace Vannon.Teste.WebApp.Controllers
 {
     public class BookingController : Controller
     {
-        // GET: HomeController
+        #region Views
         public ActionResult Index()
         {
             return View();
         }
+        #endregion
 
-        // GET: HomeController/Details/5
-        public ActionResult Details(int id)
+        #region Injections
+        private readonly IReservaService _reservaService;
+        private readonly ILocacaoService _locacaoService;
+        private readonly IFilmeService _filmeService;
+        private readonly IClienteService _clienteService;
+
+        public BookingController(IReservaService reservaService, ILocacaoService locacaoService, IFilmeService filmeService, IClienteService clienteService)
         {
-            return View();
+            _reservaService = reservaService;
+            _locacaoService = locacaoService;
+            _filmeService = filmeService;
+            _clienteService = clienteService;
         }
+        #endregion
 
-        // GET: HomeController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: HomeController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: HomeController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: HomeController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        #region Endpoints
+        [HttpPost("reserva")]
+        public async Task<IActionResult> ReservarFilmeAsync([FromBody] long idFilme, long idLocacao)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                await _reservaService.ReservarFilmeAsync(idFilme, idLocacao);
+                return Ok();
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return BadRequest(ex.ToString());
             }
         }
 
-        // GET: HomeController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: HomeController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [HttpDelete]
+        public async Task<IActionResult> RemoverReservaAsync(long idFilme, long idLocacao)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                await _reservaService.RemoverReservaAsync(idFilme, idLocacao);
+                return Ok();
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return BadRequest(ex.ToString());
             }
         }
+
+        [HttpPost("locacao")]
+        public async Task<IActionResult> CriarLocacaoFilmeAsync([FromBody] long idCliente)
+        {
+            try
+            {
+                var result = await _locacaoService.CriarLocacaoFilmeAsync(idCliente);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> BuscarFilmeAsync(long idFilme)
+        {
+            try
+            {
+                var result = await _filmeService.BuscarFilmeAsync(idFilme);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
+        [HttpGet("cpf/{cpf}")]
+        public async Task<IActionResult> BuscarClientCpfAsync(string cpf)
+        {
+            try
+            {
+                var result = await _clienteService.BuscarClientCpfAsync(cpf);
+                if (result != null)
+                    return Ok(result);
+                return BadRequest("CPF não encontrado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+        #endregion
     }
 }

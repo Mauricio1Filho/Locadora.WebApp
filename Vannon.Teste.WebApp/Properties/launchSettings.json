@@ -1,26 +1,21 @@
-﻿{
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:64047",
-      "sslPort": 0
-    }
-  },
-  "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "Vannon.Teste.WebApp": {
+﻿{  
+  "profiles": {      
+    "Vannon.Teste.WebApp.Prod": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": true,      
       "applicationUrl": "http://localhost:5100",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+
+        "ASPNETCORE_ENVIRONMENT": "qa"
+      }
+    },
+    "Vannon.Teste.WebApp.Dev": {
+      "commandName": "Project",
+      "launchBrowser": true,     
+      "applicationUrl": "http://localhost:5100",
+      "environmentVariables": {
+
+        "ASPNETCORE_ENVIRONMENT": "dev"
       }
     }
   }
