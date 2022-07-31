@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-using Locadora.WebApp.Domain.Models;
+﻿using Locadora.WebApp.Domain.Models;
 using Locadora.WebApp.Domain.Repositories;
 using Locadora.WebApp.Infrastructure.Contexts;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Locadora.WebApp.Infrastructure.Repositories
 {
@@ -15,39 +15,32 @@ namespace Locadora.WebApp.Infrastructure.Repositories
             _mainContext = mainContext;
         }
 
-        public async Task<bool> AtualizarClientAsync(ClienteModel clienteModel)
+        public bool AtualizarClient(ClienteModel clienteModel)
         {
-            await Task.FromResult(_mainContext.Clientes.Update(clienteModel));
+            Task.FromResult(_mainContext.Clientes.Update(clienteModel));
             return true;
         }
 
-        public async Task<ClienteModel> BuscarClientAsync(long idCliente)
+        public ClienteModel BuscarClient(long idCliente)
         {
-            return await _mainContext.Clientes.FirstOrDefaultAsync(o => o.IdCliente == idCliente);
+            return _mainContext.Clientes.FirstOrDefault(o => o.IdCliente == idCliente);
         }
 
-        public async Task<ClienteModel> BuscarClientCpfAsync(string cpf)
+        public ClienteModel BuscarClientCpf(string cpf)
         {
-            return await _mainContext.Clientes.FirstOrDefaultAsync(o => o.Cpf == cpf);
+            return _mainContext.Clientes.FirstOrDefault(o => o.Cpf == cpf);
         }
 
-        public async Task<bool> CadastrarClientAsync(ClienteModel clienteModel)
+        public bool CadastrarClient(ClienteModel clienteModel)
         {
-            if (clienteModel != null && clienteModel.Nome == string.Empty && clienteModel.Cpf == string.Empty)
-            {
-                return false;
-            }
-            else
-            {
-                await _mainContext.Clientes.AddAsync(clienteModel);
-                _mainContext.SaveChanges();
-                return true;
-            }
+            _mainContext.Clientes.Add(clienteModel);
+            _mainContext.SaveChanges();
+            return true;
         }
 
-        public async Task<bool> RemoverClientAsync(long idCliente)
+        public bool RemoverClient(long idCliente)
         {
-            var result = await _mainContext.Clientes.FindAsync(idCliente);
+            var result = _mainContext.Clientes.Find(idCliente);
             _mainContext.Remove(result);
             return true;
         }

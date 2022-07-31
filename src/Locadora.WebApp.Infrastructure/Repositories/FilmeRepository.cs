@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Locadora.WebApp.Domain.Models;
 using Locadora.WebApp.Domain.Repositories;
 using Locadora.WebApp.Infrastructure.Contexts;
+using System.Linq;
 
 namespace Locadora.WebApp.Infrastructure.Repositories
 {
@@ -13,9 +14,9 @@ namespace Locadora.WebApp.Infrastructure.Repositories
         {
             _mainContext = mainContext;
         }
-        public async Task<FilmeModel> BuscarFilmeAsync(long idFilme)
+        public FilmeModel BuscarFilme(long idFilme)
         {
-            return await _mainContext.Filmes.FirstOrDefaultAsync(o => o.IdFilme == idFilme);
+            return  _mainContext.Filmes.FirstOrDefault(o => o.IdFilme == idFilme);
         }
     }
 }

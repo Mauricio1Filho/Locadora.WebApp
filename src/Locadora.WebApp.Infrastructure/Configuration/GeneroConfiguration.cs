@@ -18,9 +18,12 @@ namespace Locadora.WebApp.Infrastructure.Configuration
                 .Property(p => p.DataCriacao)
                 .IsRequired();
 
-            builder
-                .HasMany(p => p.Filmes)
-                .WithOne(l => l.Genero);
+            //builder
+            //    .HasMany(p => p.Filmes)
+            //    .WithOne(l => l.Genero)
+            //    .HasPrincipalKey(k => k.IdGenero)
+            //    .HasForeignKey(f => f.Titulo)
+            //    .HasConstraintName("FK_Genero_Filme");
         }
     }
 }

@@ -5,6 +5,6 @@ namespace Locadora.WebApp.Domain.Repositories
 {
     public interface IUsuarioRepository
     {
-        Task<UsuarioModel> PesquisarUsuarioAsync(long id);
+        UsuarioModel PesquisarUsuario(long id);
     }
 }

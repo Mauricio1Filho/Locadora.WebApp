@@ -16,9 +16,9 @@ namespace Locadora.WebApp.Domain.Services
             _locacaoRepository = locacaoRepository;
         }
 
-        public async Task<bool> CriarLocacaoFilmeAsync(long idCliente)
+        public bool CriarLocacaoFilme(int idCliente)
         {
-            return await _locacaoRepository.CriarLocacaoFilmeAsync(idCliente);
+            return _locacaoRepository.CriarLocacaoFilme(idCliente);
         }
     }
 }

@@ -6,6 +6,6 @@ namespace Locadora.WebApp.Domain.Interfaces
 {
     public interface IFilmeService
     {
-        Task<FilmeModel> BuscarFilmeAsync(long idFilme);
+        FilmeModel BuscarFilme(long idFilme);
     }
 }

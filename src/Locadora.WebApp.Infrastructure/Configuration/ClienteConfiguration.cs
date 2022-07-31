@@ -23,6 +23,8 @@ namespace Locadora.WebApp.Infrastructure.Configuration
                .Property(p => p.Nome)
                .HasMaxLength(50)
                .IsRequired();
+
+            
         }
     }
 }

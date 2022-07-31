@@ -1,9 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Locadora.WebApp.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Locadora.WebApp.Domain.Models;
 
 namespace Locadora.WebApp.Infrastructure.Configuration
 {
@@ -26,14 +23,12 @@ namespace Locadora.WebApp.Infrastructure.Configuration
                 .HasMaxLength(50)
                 .IsRequired();
 
-            builder
-                .Property(p => p.IdGenero)
-                .IsRequired();
-
-            builder
-                .HasOne(p => p.Genero)
-                .WithMany(l => l.Filmes)
-                .HasForeignKey(p => p.IdGenero);
+            //builder
+            //   .HasOne(p => p.Locacao)
+            //   .WithMany(l => l.Filmes)
+            //   .HasPrincipalKey(k => k.IdLocacao)
+            //   .HasForeignKey(f => f.IdFilme)
+            //   .HasConstraintName("ForeignKey_Filme_Locacao");
         }
     }
 }

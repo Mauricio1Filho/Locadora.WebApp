@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using Locadora.WebApp.Domain.Interfaces;
 using Locadora.WebApp.Domain.Models;
+using Locadora.WebApp.DTOs;
 
 namespace Locadora.WebApp.Controllers
 {
@@ -25,25 +26,30 @@ namespace Locadora.WebApp.Controllers
 
         #region Endpoints
         [HttpPost]
-        public IActionResult CadastrarClientAsync([FromBody] ClienteModel clienteModel)
+        public IActionResult RegisterClient([FromBody] ClientDTO clienteModel)
         {
             try
             {
-                _clienteService.CadastrarClientAsync(clienteModel);
-                return Ok(true);
+                var result = _clienteService.CadastrarClient(ClientDTO.MapClientDTOToModel(clienteModel));
+                if (result == true)
+                {
+                    return Ok();
+                }
+                
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.ToString());
             }
+            return BadRequest();
         }
 
         [HttpDelete("{idCliente}")]
-        public async Task<IActionResult> RemoverClientAsync(long idCliente)
+        public IActionResult RemoverClient(long idCliente)
         {
             try
             {
-                await _clienteService.RemoverClientAsync(idCliente);
+                _clienteService.RemoverClient(idCliente);
                 return Ok(true);
             }
             catch (Exception ex)
@@ -53,11 +59,11 @@ namespace Locadora.WebApp.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> AtualizarClientAsync([FromBody] ClienteModel clienteModel)
+        public IActionResult AtualizarClient([FromBody] ClienteModel clienteModel)
         {
             try
             {
-                await _clienteService.AtualizarClientAsync(clienteModel);
+                _clienteService.AtualizarClient(clienteModel);
                 return Ok();
             }
             catch (Exception ex)

@@ -5,6 +5,6 @@ namespace Locadora.WebApp.Domain.Interfaces
 {
     public interface ILoginService 
     {
-        Task<UsuarioModel> LogarAsync(string usuario, string senha);
+        UsuarioModel Logar(string usuario, string senha);
     }
 }

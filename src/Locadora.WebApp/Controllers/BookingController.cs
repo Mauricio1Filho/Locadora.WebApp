@@ -3,7 +3,6 @@ using System;
 using System.Threading.Tasks;
 using Locadora.WebApp.Domain.Interfaces;
 
-
 namespace Locadora.WebApp.Controllers
 {
     public class BookingController : Controller
@@ -16,14 +15,12 @@ namespace Locadora.WebApp.Controllers
         #endregion
 
         #region Injections
-        private readonly IReservaService _reservaService;
         private readonly ILocacaoService _locacaoService;
         private readonly IFilmeService _filmeService;
         private readonly IClienteService _clienteService;
 
-        public BookingController(IReservaService reservaService, ILocacaoService locacaoService, IFilmeService filmeService, IClienteService clienteService)
+        public BookingController( ILocacaoService locacaoService, IFilmeService filmeService, IClienteService clienteService)
         {
-            _reservaService = reservaService;
             _locacaoService = locacaoService;
             _filmeService = filmeService;
             _clienteService = clienteService;
@@ -31,40 +28,12 @@ namespace Locadora.WebApp.Controllers
         #endregion
 
         #region Endpoints
-        [HttpPost("reserva")]
-        public async Task<IActionResult> ReservarFilmeAsync([FromBody] long idFilme, long idLocacao)
-        {
-            try
-            {
-                await _reservaService.ReservarFilmeAsync(idFilme, idLocacao);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.ToString());
-            }
-        }
-
-        [HttpDelete]
-        public async Task<IActionResult> RemoverReservaAsync(long idFilme, long idLocacao)
-        {
-            try
-            {
-                await _reservaService.RemoverReservaAsync(idFilme, idLocacao);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.ToString());
-            }
-        }
-
         [HttpPost("locacao")]
-        public async Task<IActionResult> CriarLocacaoFilmeAsync([FromBody] long idCliente)
+        public IActionResult CriarLocacaoFilme([FromBody] int idCliente)
         {
             try
             {
-                var result = await _locacaoService.CriarLocacaoFilmeAsync(idCliente);
+                var result = _locacaoService.CriarLocacaoFilme(idCliente);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -74,11 +43,11 @@ namespace Locadora.WebApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> BuscarFilmeAsync(long idFilme)
+        public IActionResult BuscarFilme(long idFilme)
         {
             try
             {
-                var result = await _filmeService.BuscarFilmeAsync(idFilme);
+                var result = _filmeService.BuscarFilme(idFilme);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -88,11 +57,11 @@ namespace Locadora.WebApp.Controllers
         }
 
         [HttpGet("cpf/{cpf}")]
-        public async Task<IActionResult> BuscarClientCpfAsync(string cpf)
+        public IActionResult BuscarClientCpf(string cpf)
         {
             try
             {
-                var result = await _clienteService.BuscarClientCpfAsync(cpf);
+                var result = _clienteService.BuscarClientCpf(cpf);
                 if (result != null)
                     return Ok(result);
                 return BadRequest("CPF não encontrado");

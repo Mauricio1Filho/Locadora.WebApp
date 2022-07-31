@@ -14,15 +14,12 @@ namespace Locadora.WebApp.Infrastructure.Configuration
                 .Property(p => p.DataCriacao)
                 .IsRequired();
 
-            builder
-                .Property(p => p.IdCliente)
-                .IsRequired();
-
-            builder
-                .HasOne(p => p.Cliente)
-                .WithMany(l => l.Locacoes)
-                .HasForeignKey(f => f.IdCliente);
-
+            //builder
+            //    .HasMany(p => p.Filmes)
+            //    .WithOne(l => l.Locacao)
+            //    .HasPrincipalKey(k => k.IdLocacao)
+            //    .HasForeignKey(f => f.IdFilme)
+            //    .HasConstraintName("FK_Locacao_Filme");
         }
     }
 }

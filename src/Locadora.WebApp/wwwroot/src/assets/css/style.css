@@ -8350,7 +8350,7 @@ textarea.form-control {
 
 .bg-image {
     /* The image used */
-    background-image: url("../images/filme-bg.jpg");
+    background-image: url("../img/filme-bg.jpg");
     /* Add the blur effect */
     -webkit-backdrop-filter: blur(5px);   
     backdrop-filter: blur(5px);    

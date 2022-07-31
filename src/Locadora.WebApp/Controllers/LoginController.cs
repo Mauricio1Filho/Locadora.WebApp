@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Locadora.WebApp.Domain.Interfaces;
+using Locadora.WebApp.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using Locadora.WebApp.Domain.Interfaces;
-using Locadora.WebApp.DTOs;
 
 namespace Locadora.WebApp.Controllers
 {
@@ -29,7 +28,7 @@ namespace Locadora.WebApp.Controllers
         {
             try
             {
-                var result = _loginService.LogarAsync(payload.Login, payload.Senha).Result;
+                var result = _loginService.Logar(payload.Login, payload.Senha);
                 if (result != null)
                 {
                     return Ok();
@@ -39,20 +38,6 @@ namespace Locadora.WebApp.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.ToString());
-            }
-        }
-        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
             }
         }
         #endregion

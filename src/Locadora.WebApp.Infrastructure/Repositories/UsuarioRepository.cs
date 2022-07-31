@@ -1,8 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-using Locadora.WebApp.Domain.Models;
+﻿using Locadora.WebApp.Domain.Models;
 using Locadora.WebApp.Domain.Repositories;
 using Locadora.WebApp.Infrastructure.Contexts;
+using System.Linq;
 
 namespace Locadora.WebApp.Infrastructure.Repositories
 {
@@ -15,9 +14,9 @@ namespace Locadora.WebApp.Infrastructure.Repositories
             _mainContext = mainContext;
         }
 
-        public async Task<UsuarioModel> PesquisarUsuarioAsync(long id)
+        public UsuarioModel PesquisarUsuario(long id)
         {
-            return await _mainContext.Usuarios.FirstOrDefaultAsync(o => o.IdUsuario == id);
+            return _mainContext.Usuarios.FirstOrDefault(o => o.IdUsuario == id);
         }
     }
 }

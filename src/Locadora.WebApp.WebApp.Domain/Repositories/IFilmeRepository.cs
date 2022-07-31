@@ -5,6 +5,6 @@ namespace Locadora.WebApp.Domain.Repositories
 {
     public interface IFilmeRepository
     {
-        Task<FilmeModel> BuscarFilmeAsync(long idFilme);
+        FilmeModel BuscarFilme(long idFilme);
     }
 }

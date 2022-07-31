@@ -16,9 +16,9 @@ namespace Locadora.WebApp.Domain.Services
         {
             _filmeRepository = filmeRepository;
         }
-        public async Task<FilmeModel> BuscarFilmeAsync(long idFilme)
+        public FilmeModel BuscarFilme(long idFilme)
         {
-            return await _filmeRepository.BuscarFilmeAsync(idFilme);
+            return  _filmeRepository.BuscarFilme(idFilme);
         }
     }
 }

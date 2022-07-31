@@ -13,7 +13,7 @@ using Locadora.WebApp.Infrastructure.Repositories;
 namespace Locadora.WebApp
 {
     public class Startup
-    {        
+    {
         public Startup(IHostEnvironment hostEnvironment, IConfiguration configuration)
         {
             Configuration = configuration;
@@ -35,7 +35,8 @@ namespace Locadora.WebApp
 
             var connection = Configuration["ConnectionStrings:VannonDb"];
             services.AddDbContext<MainContext>(options =>
-                options.UseMySql(connection));
+                options.
+                UseMySql(connection));
 
             services.AddDbContext<MainContext>(
                 options => options.UseMySql("ConnectionStrings:VannonDb"));
@@ -44,14 +45,12 @@ namespace Locadora.WebApp
             services.AddTransient<ILoginRepository, LoginRepository>();
             services.AddTransient<IFilmeRepository, FilmeRepository>();
             services.AddTransient<ILocacaoRepository, LocacaoRepository>();
-            services.AddTransient<IReservaRepository, ReservaRepository>();
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IFilmeService, FilmeService>();
             services.AddScoped<ILocacaoService, LocacaoService>();
-            services.AddScoped<IReservaService, ReservaService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
         }
 
@@ -71,9 +70,16 @@ namespace Locadora.WebApp
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
-            {             
+            {
                 endpoints.MapControllerRoute(
-                    name: "Default",
+                    name: "Reserva",
+                    pattern: "{controller=Booking}/{action=Index}");
+                endpoints.MapControllerRoute(
+                    name: "Cliente",
+                    pattern: "{controller=Client}/{action=Index}");
+
+                endpoints.MapControllerRoute(
+                    name: "Login",
                     pattern: "{controller=Login}/{action=Index}");
             });
         }

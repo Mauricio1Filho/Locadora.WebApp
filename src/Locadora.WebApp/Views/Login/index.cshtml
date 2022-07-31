@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Login Page";
+    ViewData["Title"] = "LoginIndex";
 }
 <head>
     <title>Locadora</title>
@@ -10,8 +10,8 @@
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/social-media-icons.css">
+    <link rel="stylesheet" href="~/src/assets/css/style.css">
+    <link rel="stylesheet" href="~/src/assets/css/social-media-icons.css">
 </head>
 <body class="img js-fullheight bg-image">
     <section class="ftco-section">
@@ -60,10 +60,13 @@
                 </div>
             </div>
         </div>
-    </section>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="~/js/login.js"></script>
+    </section>    
 </body>
+
+@section Scripts{
+    <script src="~/js/scripts/jquery.min.js"></script>
+    <script src="~/js/scripts/popper.js"></script>
+    <script src="~/js/scripts/bootstrap.min.js"></script>
+    <script src="~/js/scripts/main.js"></script>
+    <script src="~/js/controllers/login.js"></script>
+}

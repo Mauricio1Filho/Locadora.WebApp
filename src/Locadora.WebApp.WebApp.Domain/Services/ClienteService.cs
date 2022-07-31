@@ -14,29 +14,29 @@ namespace Locadora.WebApp.Domain.Services
             _clienteRepository = clienteRepository;
         }
 
-        public async Task<bool> AtualizarClientAsync(ClienteModel clienteModel)
+        public bool AtualizarClient(ClienteModel clienteModel)
         {
-            return await _clienteRepository.AtualizarClientAsync(clienteModel);
+            return  _clienteRepository.AtualizarClient(clienteModel);
         }
 
-        public async Task<ClienteModel> BuscarClientAsync(long idCliente)
+        public ClienteModel BuscarClient(long idCliente)
         {
-            return await _clienteRepository.BuscarClientAsync(idCliente);
+            return  _clienteRepository.BuscarClient(idCliente);
         }
 
-        public async Task<ClienteModel> BuscarClientCpfAsync(string cpf)
+        public ClienteModel BuscarClientCpf(string cpf)
         {
-            return await _clienteRepository.BuscarClientCpfAsync(cpf);
+            return _clienteRepository.BuscarClientCpf(cpf);
         }
 
-        public async Task<bool> CadastrarClientAsync(ClienteModel clienteModel)
+        public bool CadastrarClient(ClienteModel clienteModel)
         {
-            return await _clienteRepository.CadastrarClientAsync(clienteModel);
+            return _clienteRepository.CadastrarClient(clienteModel);
         }
 
-        public async Task<bool> RemoverClientAsync(long idCliente)
+        public bool RemoverClient(long idCliente)
         {
-            return await _clienteRepository.RemoverClientAsync(idCliente);
+            return _clienteRepository.RemoverClient(idCliente);
         }
     }
 }

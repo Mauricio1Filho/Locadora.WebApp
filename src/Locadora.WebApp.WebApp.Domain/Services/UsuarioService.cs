@@ -16,9 +16,9 @@ namespace Locadora.WebApp.Domain.Services
         {
             _usuarioRepository = usuarioRepository;
         }
-        public async Task<UsuarioModel> PesquisarUsuarioAsync(long id)
+        public UsuarioModel PesquisarUsuario(long id)
         {
-            return await _usuarioRepository.PesquisarUsuarioAsync(id);
+            return _usuarioRepository.PesquisarUsuario(id);
         }
     }
 }

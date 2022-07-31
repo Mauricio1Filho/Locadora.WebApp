@@ -1,16 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using Locadora.WebApp.Domain.Models;
-using Locadora.WebApp.Infrastructure.Configuration;
+﻿using Locadora.WebApp.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Locadora.WebApp.Infrastructure.Contexts
 {
     public class MainContext : DbContext
     {
         public DbSet<UsuarioModel> Usuarios { get; set; }
+        public DbSet<AddressModel> Enderecos { get; set; }
+        public DbSet<ContactModel> Contatos { get; set; }
         public DbSet<ClienteModel> Clientes { get; set; }
         public DbSet<LocacaoModel> Locacoes { get; set; }
-        public DbSet<ReservaModel> Reservas { get; set; }
+        public DbSet<LocacaoFilmes> LocacaoFilmes { get; set; }
         public DbSet<FilmeModel> Filmes { get; set; }
         public DbSet<GeneroModel> Generos { get; set; }
 
@@ -18,71 +18,38 @@ namespace Locadora.WebApp.Infrastructure.Contexts
         {
 
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
-            modelBuilder.ApplyConfiguration(new ClienteConfiguration());
-            modelBuilder.ApplyConfiguration(new FilmeConfiguration());
-            modelBuilder.ApplyConfiguration(new GeneroConfiguration());
-            modelBuilder.ApplyConfiguration(new LocacaoConfiguration());
-            modelBuilder.ApplyConfiguration(new ReservaConfiguration());
+            modelBuilder.Entity<ContactModel>()
+               .HasOne(p => p.Cliente)
+               .WithOne(l => l.Contato)
+               .HasPrincipalKey<ContactModel>(f => f.IdContato)
+               .HasForeignKey<ClienteModel>(l => l.ClienteIdContato);
 
-            modelBuilder.Entity<GeneroModel>().HasData(
-                new GeneroModel()
-                {
-                    IdGenero = 1,
-                    Descricao = "Terror",
-                    DataCriacao = DateTime.Now
-                },
-                new GeneroModel()
-                {
-                    IdGenero = 2,
-                    Descricao = "Comedia",
-                    DataCriacao = DateTime.Now
-                },
-                new GeneroModel()
-                {
-                    IdGenero = 3,
-                    Descricao = "Acao",
-                    DataCriacao = DateTime.Now
-                },
-                new GeneroModel()
-                {
-                    IdGenero = 4,
-                    Descricao = "Drama",
-                    DataCriacao = DateTime.Now
-                });
+            modelBuilder.Entity<AddressModel>()
+               .HasOne(p => p.Cliente)
+               .WithOne(l => l.Endereco)
+               .HasPrincipalKey<AddressModel>(f => f.IdEndereco)
+               .HasForeignKey<ClienteModel>(f => f.ClienteIdEndereco);
 
-            modelBuilder.Entity<UsuarioModel>().HasData(
-                new UsuarioModel()
-                {
-                    IdUsuario = 1,
-                    Nome = "Administrador",
-                    Login = "admin@admin.com",
-                    Senha = "admin",
-                    DataCriacao = DateTime.Now
-                });
+            modelBuilder.Entity<LocacaoFilmes>()
+                .HasKey(bc => new { bc.LocacaoId, bc.FilmeId });
 
-            modelBuilder.Entity<FilmeModel>().HasData(
-                new FilmeModel()
-                {
-                    IdFilme = 1,
-                    IdGenero = 3,
-                    Preco = 14.99,
-                    Titulo = "Viuva Negra",
-                    DataCriacao = DateTime.Now
-                },
-                new FilmeModel()
-                {
-                    IdFilme = 2,
-                    IdGenero = 2,
-                    Preco = 19.99,
-                    Titulo = "Space Jam: Um Novo Legado",
-                    DataCriacao = DateTime.Now
-                });
+            modelBuilder.Entity<LocacaoFilmes>()
+                .HasOne(bc => bc.Filme)
+                .WithMany(b => b.LocacaoFilmes)
+                .HasForeignKey(bc => bc.FilmeId);
 
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<LocacaoFilmes>()
+                .HasOne(bc => bc.Locacao)
+                .WithMany(b => b.LocacaoFilmes)
+                .HasForeignKey(bc => bc.LocacaoId);
+
+            modelBuilder.Entity<GeneroModel>()
+              .HasMany<FilmeModel>(p => p.Filmes)
+              .WithOne(l => l.Genero)
+              .HasPrincipalKey(k => k.IdGenero)
+              .HasForeignKey(f => f.FilmeIdGenero);
         }
     }
 }

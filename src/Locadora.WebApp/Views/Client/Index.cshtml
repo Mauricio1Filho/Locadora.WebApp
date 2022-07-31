@@ -1,47 +1,173 @@
 ﻿@{
-    ViewData["Title"] = "Client Page";
+    ViewData["Title"] = "ClientIndex";
 }
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">   
+    <link href="~/src/assets/demo/demo.css" rel="stylesheet" />
+</head>
 
-<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-<div class="text-left col-md-6">
-    <h2 class="display-6">Gerenciar Clientes</h2>
-</div>
-
-<div class="row form-group col-xl-12">
-    <div class="col form-group">
-        <div class="form-group">
-            <div class="form-group">
-                <div>
-                    <label>ID do Cliente</label>
-                </div>
-                <div>
-                    <label id="inputIdCliente"></label>                    
-                </div>                
+ @*-----------------Begin Sidebar-----------------*@
+<body>
+    <div class="wrapper ">
+        <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+            <div class="logo">
+                <h3 class="simple-text logo-normal">
+                    Locadora
+                </h3>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <i class="material-icons" disabled>person</i>
+                            <p>Gerenciar Clientes</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/booking">
+                            <i class="material-icons">theaters</i>
+                            <p>Locaçao de Filmes</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">
+                            <i class="material-icons">logout</i>
+                            <p>Sair</p>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="form-group">
-            <label>Nome do Cliente</label>
-            <input id="inputNome" type="text" class="col-4 form-control" placeholder="Nome">
-        </div>
-        <div class="form-group">
-            <label>Documento</label>
-            <div class="input-group">
-                <input id="inputCpf" class="col-4 form-control" type="text" placeholder="CPF" aria-describedby="basic-addon1">
-                <div class="input-group-append">
-                    <span id="btnSearch" class="btn btn-primary material-icons" type="button">search</span>
+        @*-----------------End Sidebar-----------------*@
+        @*-----------------BeginTable-----------------*@
+        <div class="main-panel">
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8" style="bottom:80px;">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h2 class="card-title">Cadastro de Cliente</h2>
+                                    <p class="card-category"></p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="tim-note">
+                                        <h3>
+                                            Dados Pessoais
+                                        </h3>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Nome</label>
+                                                <input id="inputNome" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">CPF</label>
+                                                <input id="inputCpf" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">E-mail</label>
+                                                <input id="inputEmail" type="email" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Data de Nascimento</label>
+                                                <input id="idDataNasc" type="date" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Celular</label>
+                                                <input id="inputTel" type="tel" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Sexo</label>
+                                                <select id="idSexo" class="custom-select mr-sm-2">
+                                                    <option selected>Selecione</option>
+                                                    <option value="F">Feminino</option>
+                                                    <option value="M">Masculino</option>
+                                                    <option value="O">Outro</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h3>
+                                        Endereço
+                                    </h3>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Endereço</label>
+                                                <input id="inputEndereco" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Número</label>
+                                                <input id="inputNumCasa" type="number" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Bairro</label>
+                                                <input id="inputBairro" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">CEP</label>
+                                                <input id="inputCEP" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Cidade</label>
+                                                <input id="inputCidade" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Estado</label>
+                                                <input id="inputEstado" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button id="btnCadastrar" type="submit" class="btn btn-primary pull-right">Cadastrar</button>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <button id="btnCriarReserva" type="submit" class="btn btn-secondary">Criar Reserva</button>
-            <button id="btnCadastrar" type="submit" class="btn btn-secondary">Cadastrar</button>
         </div>
     </div>
-</div>
+</body>
+ @*-----------------EndTable-------------*@
 
-@section Scripts {
-    <script src="~/js/clientes.js"></script>    
+@section Scripts{
+<script src="~/js/scripts/jquery.min.js"></script>
+<script src="~/js/scripts/popper.js"></script>
+<script src="~/js/scripts/bootstrap.min.js"></script>
+<script src="~/js/scripts/main.js"></script>
+<script src="~/js/controllers/client.js"></script>
+<script src="~/src/assets/demo/demo.js"></script>
 }

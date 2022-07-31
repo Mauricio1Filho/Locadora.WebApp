@@ -4,6 +4,6 @@ namespace Locadora.WebApp.Domain.Interfaces
 {
     public interface ILocacaoService
     {
-        Task<bool> CriarLocacaoFilmeAsync(long idCliente);
+        bool CriarLocacaoFilme(int idCliente);
     }
 }

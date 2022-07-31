@@ -1,15 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Locadora.WebApp.Domain.Models
 {
     public class FilmeModel
-    {
-        public long IdFilme { get; set; }
+    {       
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Required]
+        public int IdFilme { get; set; }
+        public int FilmeIdLocacao { get; set; }
+        public int FilmeIdGenero { get; set; }
+        public ICollection<LocacaoFilmes> LocacaoFilmes { get; set; }
+        public GeneroModel Genero { get; set; }
+        [Required]
         public string Titulo { get; set; }
-        public long IdGenero { get; set; }
-        public virtual GeneroModel Genero  { get; set; }
-        public virtual ICollection<ReservaModel> Reservas{ get; set; }
+        [Required]
         public double Preco { get; set; }
         public DateTime DataCriacao { get; set; }
     }

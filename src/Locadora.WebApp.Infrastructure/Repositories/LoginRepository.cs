@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Locadora.WebApp.Domain.Models;
 using Locadora.WebApp.Domain.Repositories;
 using Locadora.WebApp.Infrastructure.Contexts;
+using System.Linq;
 
 namespace Locadora.WebApp.Infrastructure.Repositories
 {
@@ -15,12 +16,12 @@ namespace Locadora.WebApp.Infrastructure.Repositories
             _mainContext = mainContext;
         }
 
-        public async Task<UsuarioModel> LogarAsync(string usuario, string senha)
+        public UsuarioModel Logar(string usuario, string senha)
         {
 
             if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(senha))
             {
-                return await _mainContext.Usuarios.FirstOrDefaultAsync(o => o.Login.Equals(usuario) && o.Senha.Equals(senha));                
+                return  _mainContext.Usuarios.FirstOrDefault(o => o.Login.Equals(usuario) && o.Senha.Equals(senha));                
             }
             return default;
         }

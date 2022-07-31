@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Locadora.WebApp.Domain.Models
 {
     public class UsuarioModel
     {
-        public long IdUsuario { get; set; }
+        [Key]
+        public int IdUsuario { get; set; }
         public string Nome { get; set; }
         public string Login { get; set; }
         public string Senha { get; set; }

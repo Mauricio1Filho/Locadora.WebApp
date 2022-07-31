@@ -7,6 +7,6 @@ namespace Locadora.WebApp.Domain.Repositories
 {
     public interface ILocacaoRepository
     {
-        Task<bool> CriarLocacaoFilmeAsync(long idCliente);
+        bool CriarLocacaoFilme(int idCliente);
     }
 }

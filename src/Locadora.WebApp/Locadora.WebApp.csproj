@@ -12,7 +12,7 @@
 	<ItemGroup>
 		<None Include="Views\Login\index.cshtml" />
 		<None Include="wwwroot\js\controllers\booking.js" />
-		<None Include="wwwroot\js\controllers\clientes.js" />
+		<None Include="wwwroot\js\controllers\client.js" />
 		<None Include="wwwroot\js\controllers\login.js" />
 		<None Include="wwwroot\src\assets\css\material-dashboard.css.map" />
 		<None Include="wwwroot\src\assets\demo\demo.js" />
@@ -191,9 +191,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.17" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.27" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.27" />
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
-		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.2" />
+		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.7" />
 		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
 	</ItemGroup>
 

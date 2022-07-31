@@ -5,10 +5,10 @@ namespace Locadora.WebApp.Domain.Repositories
 {
     public interface IClienteRepository
     {
-        Task<ClienteModel> BuscarClientAsync(long idCliente);
-        Task<ClienteModel> BuscarClientCpfAsync(string cpf);
-        Task<bool> RemoverClientAsync(long idCliente);
-        Task<bool> AtualizarClientAsync(ClienteModel clienteModel);
-        Task<bool> CadastrarClientAsync(ClienteModel clienteModel);
+        ClienteModel BuscarClient(long idCliente);
+        ClienteModel BuscarClientCpf(string cpf);
+        bool RemoverClient(long idCliente);
+        bool AtualizarClient(ClienteModel clienteModel);
+        bool CadastrarClient(ClienteModel clienteModel);
     }
 }

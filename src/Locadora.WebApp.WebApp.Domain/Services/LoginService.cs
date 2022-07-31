@@ -15,9 +15,9 @@ namespace Locadora.WebApp.Domain.Services
             _loginRepository = loginRepository;
         }
 
-        public async Task<UsuarioModel> LogarAsync(string usuario, string senha)
+        public UsuarioModel Logar(string usuario, string senha)
         {
-            return await _loginRepository.LogarAsync(usuario, senha);
+            return _loginRepository.Logar(usuario, senha);
         }
     }
 }

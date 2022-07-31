@@ -14,11 +14,11 @@ namespace Locadora.WebApp.Infrastructure.Repositories
             _mainContext = mainContext;
         }
 
-        public async Task<bool> CriarLocacaoFilmeAsync(long idCliente)
+        public bool CriarLocacaoFilme(int idCliente)
         {
-            await  _mainContext.Locacoes.AddAsync (new LocacaoModel {IdCliente = idCliente });
-            await _mainContext.SaveChangesAsync();
-            return true; 
+            _mainContext.Clientes.Add(new ClienteModel { IdCliente = idCliente });
+            _mainContext.SaveChanges();
+            return true;
         }
     }
 }
