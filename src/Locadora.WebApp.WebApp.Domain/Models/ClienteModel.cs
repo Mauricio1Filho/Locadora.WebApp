@@ -23,5 +23,5 @@ namespace Locadora.WebApp.Domain.Models
         public string Sexo { get; set; }
         public DateTime DataCriacao { get; set; }
         public DateTime DataNascimento { get; set; }        
-    }
+    }    
 }

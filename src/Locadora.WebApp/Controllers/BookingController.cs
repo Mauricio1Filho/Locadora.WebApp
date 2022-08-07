@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Locadora.WebApp.Domain.Interfaces;
+using Locadora.WebApp.ViewModel;
+using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Threading.Tasks;
-using Locadora.WebApp.Domain.Interfaces;
 
 namespace Locadora.WebApp.Controllers
 {
@@ -10,7 +10,7 @@ namespace Locadora.WebApp.Controllers
         #region Views
         public ActionResult Index()
         {
-            return View();
+            return View ();
         }
         #endregion
 
@@ -56,12 +56,13 @@ namespace Locadora.WebApp.Controllers
             }
         }
 
-        [HttpGet("cpf/{cpf}")]
+        [HttpGet]
         public IActionResult BuscarClientCpf(string cpf)
         {
             try
             {
                 var result = _clienteService.BuscarClientCpf(cpf);
+                ClientViewModel.MapModelToClienteDTO(result);
                 if (result != null)
                     return Ok(result);
                 return BadRequest("CPF não encontrado");

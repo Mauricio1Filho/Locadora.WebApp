@@ -21,14 +21,7 @@ namespace Locadora.WebApp.Infrastructure.Configuration
             builder
                 .Property(p => p.Titulo)
                 .HasMaxLength(50)
-                .IsRequired();
-
-            //builder
-            //   .HasOne(p => p.Locacao)
-            //   .WithMany(l => l.Filmes)
-            //   .HasPrincipalKey(k => k.IdLocacao)
-            //   .HasForeignKey(f => f.IdFilme)
-            //   .HasConstraintName("ForeignKey_Filme_Locacao");
+                .IsRequired();            
         }
     }
 }

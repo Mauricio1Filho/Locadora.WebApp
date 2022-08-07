@@ -4,7 +4,7 @@
         var inputSenha = $("#inputSenha").val();
         $.ajax({
             type: "POST",
-            url: "login/logar",
+            url: "login/Logar",
             data: JSON.stringify({
                 login: inputEmail,
                 senha: inputSenha

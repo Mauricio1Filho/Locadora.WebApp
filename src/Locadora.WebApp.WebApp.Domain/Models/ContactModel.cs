@@ -11,7 +11,7 @@ namespace Locadora.WebApp.Domain.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdContato { get; set; }       
         [Required]
-        public string Email { get; set; }                
+        public string Email { get; set; }
         public string Celular { get; set; }
         public ClienteModel Cliente { get; set; }
     }

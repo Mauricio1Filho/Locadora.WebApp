@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using Locadora.WebApp.Domain.Interfaces;
 using Locadora.WebApp.Domain.Models;
-using Locadora.WebApp.DTOs;
+using Locadora.WebApp.ViewModel;
 
 namespace Locadora.WebApp.Controllers
 {
@@ -26,11 +26,11 @@ namespace Locadora.WebApp.Controllers
 
         #region Endpoints
         [HttpPost]
-        public IActionResult RegisterClient([FromBody] ClientDTO clienteModel)
+        public IActionResult RegisterClient([FromBody] ClientViewModel clienteModel)
         {
             try
             {
-                var result = _clienteService.CadastrarClient(ClientDTO.MapClientDTOToModel(clienteModel));
+                var result = _clienteService.CadastrarClient(ClientViewModel.MapClientDTOToModel(clienteModel));
                 if (result == true)
                 {
                     return Ok();

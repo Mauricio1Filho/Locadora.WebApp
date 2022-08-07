@@ -9,6 +9,8 @@ using Locadora.WebApp.Domain.Repositories;
 using Locadora.WebApp.Domain.Services;
 using Locadora.WebApp.Infrastructure.Contexts;
 using Locadora.WebApp.Infrastructure.Repositories;
+using Locadora.WebApp.Domain.Models;
+using Locadora.WebApp.ViewModel;
 
 namespace Locadora.WebApp
 {
@@ -52,6 +54,7 @@ namespace Locadora.WebApp
             services.AddScoped<IFilmeService, FilmeService>();
             services.AddScoped<ILocacaoService, LocacaoService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,15 +75,15 @@ namespace Locadora.WebApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "Reserva",
-                    pattern: "{controller=Booking}/{action=Index}");
+                    name: "Booking",
+                    pattern: "{controller=Booking}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
-                    name: "Cliente",
-                    pattern: "{controller=Client}/{action=Index}");
+                    name: "Client",
+                    pattern: "{controller=Client}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "Login",
-                    pattern: "{controller=Login}/{action=Index}");
+                    pattern: "{controller=Login}/{action=Index}/");
             });
         }
     }

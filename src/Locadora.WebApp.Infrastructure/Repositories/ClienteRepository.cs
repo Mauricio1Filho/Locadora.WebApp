@@ -28,7 +28,37 @@ namespace Locadora.WebApp.Infrastructure.Repositories
 
         public ClienteModel BuscarClientCpf(string cpf)
         {
-            return _mainContext.Clientes.FirstOrDefault(o => o.Cpf == cpf);
+            var data = _mainContext.Clientes
+                .Join(
+                 _mainContext.Contatos,
+                 cliente => cliente.IdCliente,
+                 contato => contato.Cliente.ClienteIdContato,
+                (cliente, contato) => new { cliente, contato })
+                .Join(
+                 _mainContext.Enderecos,
+                 o => o.cliente.ClienteIdEndereco,
+                 endereco => endereco.IdEndereco,
+                (cliente, endereco) => new { cliente, endereco })
+                .Where(r => r.cliente.cliente.Cpf == cpf)
+                .Select(z => new ClienteModel
+                {
+                    IdCliente = z.cliente.cliente.IdCliente,
+                    Nome = z.cliente.cliente.Nome,
+                    Contato = new ContactModel 
+                    {
+                        Email = z.cliente.contato.Email,
+                        Celular = z.cliente.contato.Celular                    
+                    },
+                    Endereco = new AddressModel 
+                    {
+                        Endereco = z.endereco.Endereco,
+                        Cidade = z.endereco.Cidade,
+                        Bairro = z.endereco.Bairro,
+                        CEP = z.endereco.CEP,
+                        Numero = z.endereco.Numero
+                    }
+                }).FirstOrDefault();
+            return data;
         }
 
         public bool CadastrarClient(ClienteModel clienteModel)

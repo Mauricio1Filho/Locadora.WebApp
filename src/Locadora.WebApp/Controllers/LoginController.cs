@@ -1,5 +1,5 @@
 ﻿using Locadora.WebApp.Domain.Interfaces;
-using Locadora.WebApp.DTOs;
+using Locadora.WebApp.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -24,11 +24,11 @@ namespace Locadora.WebApp.Controllers
 
         #region Endpoints
         [HttpPost]
-        public IActionResult Logar([FromBody]LoginDTO payload)
+        public IActionResult Logar([FromBody]LoginViewModel payload)
         {
             try
             {
-                var result = _loginService.Logar(payload.Login, payload.Senha);
+                var result = _loginService.Logar(payload.login, payload.senha);
                 if (result != null)
                 {
                     return Ok();

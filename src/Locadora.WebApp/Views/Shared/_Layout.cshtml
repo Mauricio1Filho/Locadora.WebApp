@@ -13,13 +13,45 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 </head>
 <body>
+    <div class="">
+        <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+            <div class="logo">
+                <h3 class="simple-text logo-normal">
+                    Locadora
+                </h3>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/client">
+                            <i class="material-icons" >person</i>
+                            <p>Gerenciar Clientes</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/booking">
+                            <i class="material-icons">theaters</i>
+                            <p>Locaçao de Filmes</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">
+                            <i class="material-icons">logout</i>
+                            <p>Sair</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>    
+    </div>
+
     @RenderSection("Scripts", required: false)
-    
+
     <script src="~/src/assets/js/core/jquery.min.js" type="text/javascript"></script>
     <script src="~/src/assets/js/core/popper.min.js" type="text/javascript"></script>
     <script src="~/src/assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
