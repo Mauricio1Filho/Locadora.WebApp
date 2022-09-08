@@ -11,7 +11,6 @@ namespace Locadora.WebApp.Domain.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
         public int IdFilme { get; set; }
-        public int FilmeIdLocacao { get; set; }
         public int FilmeIdGenero { get; set; }
         public ICollection<LocacaoFilmes> LocacaoFilmes { get; set; }
         public GeneroModel Genero { get; set; }

@@ -1,13 +1,16 @@
 ﻿$(document).ready(function () {
     $("#btnLocar").click(function () {
-        var inputIdCliente = $("#inputIdCliente").val();
-        var idFilme = $("#idFilme").val();
+        var inputcpf = $("#inputCpf").val();
+        var idFilme = $("#inputIdFilme").val();
+        console.log(inputcpf, idFilme)
         const url = "/Booking/CriarLocacaoFilme"
         $.ajax({
             type: "POST",
+            dataType: 'json',
             url: url,
             data: JSON.stringify({
-                idCliente: inputIdCliente,                
+                cpf: inputcpf,
+                idFilme: parseInt(idFilme)
             }),
             headers: {
                 'Accept': 'application/json',
@@ -37,16 +40,16 @@ $(document).ready(function () {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            success: function (data) {
+            success: function (data) {                
                 if (data) {
-                    $("#inputNome").html(data.nome);
-                    $("#inputContatoEmail").html(data.contato.email);
-                    $("#inputContatoCelular").html(data.contato.celular);
-                    $("#inputEndereco").html(data.endereco.endereco);
-                    $("#inputEnderecoNumero").html(data.endereco.numero);
-                    $("#inputEnderecoBairro").html(data.endereco.bairro);
-                    $("#inputEnderecoCEP").html(data.endereco.cep);
-                    $("#inputEnderecoCidade").html(data.endereco.cidade);
+                    $("#inputNome").val(data.nome)
+                    $("#inputContatoEmail").val(data.contato.email);
+                    $("#inputContatoCelular").val(data.contato.celular);
+                    $("#inputEndereco").val(data.endereco.endereco);
+                    $("#inputEnderecoNumero").val(data.endereco.numero);
+                    $("#inputEnderecoBairro").val(data.endereco.bairro);
+                    $("#inputEnderecoCEP").val(data.endereco.cep);
+                    $("#inputEnderecoCidade").val(data.endereco.cidade);
                 }
                 else {
                     alert("Campos nao preenchidos corretamente")

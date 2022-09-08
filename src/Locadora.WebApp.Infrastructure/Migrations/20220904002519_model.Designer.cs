@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Locadora.WebApp.Infrastructure.Migrations
 {
     [DbContext(typeof(MainContext))]
-    [Migration("20220731000213_model")]
+    [Migration("20220904002519_model")]
     partial class model
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.27")
+                .HasAnnotation("ProductVersion", "3.1.28")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Locadora.WebApp.Domain.Models.AddressModel", b =>
@@ -124,9 +124,6 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                     b.Property<int>("FilmeIdGenero")
                         .HasColumnType("int");
 
-                    b.Property<int>("FilmeIdLocacao")
-                        .HasColumnType("int");
-
                     b.Property<double>("Preco")
                         .HasColumnType("double");
 
@@ -185,9 +182,6 @@ namespace Locadora.WebApp.Infrastructure.Migrations
 
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int>("LocacaoIdCliente")
-                        .HasColumnType("int");
 
                     b.Property<decimal>("Preco")
                         .HasColumnType("decimal(65,30)");

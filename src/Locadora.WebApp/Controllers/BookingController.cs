@@ -28,12 +28,12 @@ namespace Locadora.WebApp.Controllers
         #endregion
 
         #region Endpoints
-        [HttpPost("locacao")]
-        public IActionResult CriarLocacaoFilme([FromBody] int idCliente)
+        [HttpPost]
+        public IActionResult CriarLocacaoFilme([FromBody] LocacaoViewModel payload)
         {
             try
             {
-                var result = _locacaoService.CriarLocacaoFilme(idCliente);
+                var result = _locacaoService.CriarLocacaoFilme(payload.cpf, payload.idFilme);
                 return Ok(result);
             }
             catch (Exception ex)

@@ -107,7 +107,6 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                 {
                     IdFilme = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FilmeIdLocacao = table.Column<int>(nullable: false),
                     FilmeIdGenero = table.Column<int>(nullable: false),
                     Titulo = table.Column<string>(nullable: false),
                     Preco = table.Column<double>(nullable: false),
@@ -130,7 +129,6 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                 {
                     IdLocacao = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    LocacaoIdCliente = table.Column<int>(nullable: false),
                     ClienteIdCliente = table.Column<int>(nullable: true),
                     Preco = table.Column<decimal>(nullable: false),
                     DataCriacao = table.Column<DateTime>(nullable: false)

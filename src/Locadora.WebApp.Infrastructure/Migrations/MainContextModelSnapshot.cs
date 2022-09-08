@@ -14,7 +14,7 @@ namespace Locadora.WebApp.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.27")
+                .HasAnnotation("ProductVersion", "3.1.28")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Locadora.WebApp.Domain.Models.AddressModel", b =>
@@ -122,9 +122,6 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                     b.Property<int>("FilmeIdGenero")
                         .HasColumnType("int");
 
-                    b.Property<int>("FilmeIdLocacao")
-                        .HasColumnType("int");
-
                     b.Property<double>("Preco")
                         .HasColumnType("double");
 
@@ -183,9 +180,6 @@ namespace Locadora.WebApp.Infrastructure.Migrations
 
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int>("LocacaoIdCliente")
-                        .HasColumnType("int");
 
                     b.Property<decimal>("Preco")
                         .HasColumnType("decimal(65,30)");

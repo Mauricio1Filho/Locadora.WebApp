@@ -7,6 +7,6 @@ namespace Locadora.WebApp.Domain.Repositories
 {
     public interface ILocacaoRepository
     {
-        bool CriarLocacaoFilme(int idCliente);
+        bool CriarLocacaoFilme(string cpf, int idFilme);
     }
 }

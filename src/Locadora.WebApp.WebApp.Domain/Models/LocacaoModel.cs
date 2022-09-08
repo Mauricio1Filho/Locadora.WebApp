@@ -11,7 +11,6 @@ namespace Locadora.WebApp.Domain.Models
         [Key]
         [Required]
         public int IdLocacao { get; set; }
-        public int LocacaoIdCliente { get; set; }
         public ClienteModel Cliente { get; set; }        
         public ICollection<LocacaoFilmes> LocacaoFilmes { get; set; }
         [Required]

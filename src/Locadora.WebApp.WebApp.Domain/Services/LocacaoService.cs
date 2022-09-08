@@ -16,9 +16,9 @@ namespace Locadora.WebApp.Domain.Services
             _locacaoRepository = locacaoRepository;
         }
 
-        public bool CriarLocacaoFilme(int idCliente)
+        public bool CriarLocacaoFilme(string cpf, int idFilme)
         {
-            return _locacaoRepository.CriarLocacaoFilme(idCliente);
+            return _locacaoRepository.CriarLocacaoFilme(cpf, idFilme);
         }
     }
 }
