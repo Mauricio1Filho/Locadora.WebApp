@@ -14,7 +14,6 @@ namespace Locadora.WebApp.Domain.Models
         public ClienteModel Cliente { get; set; }        
         public ICollection<LocacaoFilmes> LocacaoFilmes { get; set; }
         [Required]
-        public decimal Preco { get; set; }        
         public DateTime DataCriacao { get; set; }
     }
 }

@@ -17,7 +17,6 @@ namespace Locadora.WebApp.Domain.Models
         [Required]
         public string Titulo { get; set; }
         [Required]
-        public double Preco { get; set; }
         public DateTime DataCriacao { get; set; }
     }
 }
