@@ -60,9 +60,9 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                 {
                     IdUsuario = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(nullable: true),
-                    Login = table.Column<string>(nullable: true),
-                    Senha = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(maxLength: 50, nullable: false),
+                    Login = table.Column<string>(maxLength: 50, nullable: false),
+                    Senha = table.Column<string>(maxLength: 50, nullable: false),
                     DataCriacao = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -108,8 +108,7 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                     IdFilme = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FilmeIdGenero = table.Column<int>(nullable: false),
-                    Titulo = table.Column<string>(nullable: false),
-                    Preco = table.Column<double>(nullable: false),
+                    Titulo = table.Column<string>(maxLength: 50, nullable: false),
                     DataCriacao = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -129,8 +128,7 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                 {
                     IdLocacao = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ClienteIdCliente = table.Column<int>(nullable: true),
-                    Preco = table.Column<decimal>(nullable: false),
+                    ClienteIdCliente = table.Column<int>(nullable: false),
                     DataCriacao = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -141,7 +139,7 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                         column: x => x.ClienteIdCliente,
                         principalTable: "Clientes",
                         principalColumn: "IdCliente",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -167,6 +165,36 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                         principalColumn: "IdLocacao",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Generos",
+                columns: new[] { "IdGenero", "DataCriacao", "Descricao" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2022, 9, 11, 21, 52, 54, 61, DateTimeKind.Local).AddTicks(1414), "Terror" },
+                    { 2, new DateTime(2022, 9, 11, 21, 52, 54, 61, DateTimeKind.Local).AddTicks(1911), "Ação" },
+                    { 3, new DateTime(2022, 9, 11, 21, 52, 54, 61, DateTimeKind.Local).AddTicks(1926), "Drama" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Usuarios",
+                columns: new[] { "IdUsuario", "DataCriacao", "Login", "Nome", "Senha" },
+                values: new object[] { 1, new DateTime(2022, 9, 11, 21, 52, 54, 57, DateTimeKind.Local).AddTicks(7276), "admin@admin.com", "admin", "admin" });
+
+            migrationBuilder.InsertData(
+                table: "Filmes",
+                columns: new[] { "IdFilme", "DataCriacao", "FilmeIdGenero", "Titulo" },
+                values: new object[] { 1, new DateTime(2022, 9, 11, 21, 52, 54, 62, DateTimeKind.Local).AddTicks(2450), 1, "IT: A Coisa" });
+
+            migrationBuilder.InsertData(
+                table: "Filmes",
+                columns: new[] { "IdFilme", "DataCriacao", "FilmeIdGenero", "Titulo" },
+                values: new object[] { 2, new DateTime(2022, 9, 11, 21, 52, 54, 62, DateTimeKind.Local).AddTicks(2910), 2, "John Wick 3: Parabellum" });
+
+            migrationBuilder.InsertData(
+                table: "Filmes",
+                columns: new[] { "IdFilme", "DataCriacao", "FilmeIdGenero", "Titulo" },
+                values: new object[] { 3, new DateTime(2022, 9, 11, 21, 52, 54, 62, DateTimeKind.Local).AddTicks(2933), 3, "O Homem do Norte" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clientes_ClienteIdContato",

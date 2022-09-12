@@ -10,6 +10,7 @@ namespace Locadora.WebApp.Controllers
         #region Views
         public ActionResult Index()
         {
+
             return View ();
         }
         #endregion

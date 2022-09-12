@@ -1,4 +1,5 @@
 ﻿using Locadora.WebApp.Domain.Models;
+using Locadora.WebApp.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace Locadora.WebApp.Infrastructure.Contexts
@@ -50,6 +51,10 @@ namespace Locadora.WebApp.Infrastructure.Contexts
               .WithOne(l => l.Genero)
               .HasPrincipalKey(k => k.IdGenero)
               .HasForeignKey(f => f.FilmeIdGenero);
+
+            modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
+            modelBuilder.ApplyConfiguration(new GeneroConfiguration());
+            modelBuilder.ApplyConfiguration(new FilmeConfiguration());
         }
     }
 }

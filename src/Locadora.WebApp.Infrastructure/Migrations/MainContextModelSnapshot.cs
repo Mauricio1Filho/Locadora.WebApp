@@ -122,18 +122,39 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                     b.Property<int>("FilmeIdGenero")
                         .HasColumnType("int");
 
-                    b.Property<double>("Preco")
-                        .HasColumnType("double");
-
                     b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.HasKey("IdFilme");
 
                     b.HasIndex("FilmeIdGenero");
 
                     b.ToTable("Filmes");
+
+                    b.HasData(
+                        new
+                        {
+                            IdFilme = 1,
+                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 62, DateTimeKind.Local).AddTicks(2450),
+                            FilmeIdGenero = 1,
+                            Titulo = "IT: A Coisa"
+                        },
+                        new
+                        {
+                            IdFilme = 2,
+                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 62, DateTimeKind.Local).AddTicks(2910),
+                            FilmeIdGenero = 2,
+                            Titulo = "John Wick 3: Parabellum"
+                        },
+                        new
+                        {
+                            IdFilme = 3,
+                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 62, DateTimeKind.Local).AddTicks(2933),
+                            FilmeIdGenero = 3,
+                            Titulo = "O Homem do Norte"
+                        });
                 });
 
             modelBuilder.Entity("Locadora.WebApp.Domain.Models.GeneroModel", b =>
@@ -152,6 +173,26 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                     b.HasKey("IdGenero");
 
                     b.ToTable("Generos");
+
+                    b.HasData(
+                        new
+                        {
+                            IdGenero = 1,
+                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 61, DateTimeKind.Local).AddTicks(1414),
+                            Descricao = "Terror"
+                        },
+                        new
+                        {
+                            IdGenero = 2,
+                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 61, DateTimeKind.Local).AddTicks(1911),
+                            Descricao = "Ação"
+                        },
+                        new
+                        {
+                            IdGenero = 3,
+                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 61, DateTimeKind.Local).AddTicks(1926),
+                            Descricao = "Drama"
+                        });
                 });
 
             modelBuilder.Entity("Locadora.WebApp.Domain.Models.LocacaoFilmes", b =>
@@ -175,14 +216,11 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClienteIdCliente")
+                    b.Property<int>("ClienteIdCliente")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<decimal>("Preco")
-                        .HasColumnType("decimal(65,30)");
 
                     b.HasKey("IdLocacao");
 
@@ -201,17 +239,33 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Login")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .IsRequired()
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Nome")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .IsRequired()
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Senha")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .IsRequired()
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
 
                     b.HasKey("IdUsuario");
 
                     b.ToTable("Usuarios");
+
+                    b.HasData(
+                        new
+                        {
+                            IdUsuario = 1,
+                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 57, DateTimeKind.Local).AddTicks(7276),
+                            Login = "admin@admin.com",
+                            Nome = "admin",
+                            Senha = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Locadora.WebApp.Domain.Models.ClienteModel", b =>
@@ -257,7 +311,9 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                 {
                     b.HasOne("Locadora.WebApp.Domain.Models.ClienteModel", "Cliente")
                         .WithMany()
-                        .HasForeignKey("ClienteIdCliente");
+                        .HasForeignKey("ClienteIdCliente")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

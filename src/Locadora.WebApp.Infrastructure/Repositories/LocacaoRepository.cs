@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Locadora.WebApp.Domain.Models;
+﻿using Locadora.WebApp.Domain.Models;
 using Locadora.WebApp.Domain.Repositories;
 using Locadora.WebApp.Infrastructure.Contexts;
+using System;
+using System.Linq;
 
 namespace Locadora.WebApp.Infrastructure.Repositories
 {
@@ -18,15 +18,21 @@ namespace Locadora.WebApp.Infrastructure.Repositories
         public bool CriarLocacaoFilme(string cpf, int idFilme)
         {
             var dataset = _mainContext.Clientes
-                .Where(x => x.Cpf == cpf )
-                .Select(x => new ClienteModel { IdCliente = x.IdCliente });
-            //_mainContext.Locacoes.Add();
-            LocacaoFilmes locacaoFilmes = new LocacaoFilmes();
+                .Where(x => x.Cpf == cpf)
+                .Select(x => new ClienteModel { IdCliente = x.IdCliente }).SingleOrDefault();
+
+            var locacao = new LocacaoModel()
             {
-                locacaoFilmes.FilmeId = idFilme;
-            }
-            _mainContext.LocacaoFilmes.Add(locacaoFilmes);
-            //_mainContext.Locacoes.Add();
+                ClienteIdCliente = dataset.IdCliente
+            };
+
+            var locacaoFilme = new LocacaoFilmes()
+            {
+                FilmeId = idFilme,
+                Locacao = locacao
+            };
+            _mainContext.Locacoes.Add(locacao);
+            _mainContext.LocacaoFilmes.Add(locacaoFilme);
             _mainContext.SaveChanges();
             return true;
         }

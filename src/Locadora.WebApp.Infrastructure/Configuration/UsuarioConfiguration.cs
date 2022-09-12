@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Locadora.WebApp.Domain.Models;
+using System;
 
 namespace Locadora.WebApp.Infrastructure.Configuration
 {
@@ -28,6 +29,17 @@ namespace Locadora.WebApp.Infrastructure.Configuration
                .Property(p => p.Senha)
                .HasMaxLength(50)
                .IsRequired();
+
+            builder.HasData(
+                new UsuarioModel
+                {
+                    IdUsuario = 1,
+                    Login = "admin@admin.com",
+                    Senha = "admin",
+                    Nome = "admin",
+                    DataCriacao = DateTime.Now                
+                }            
+            );
         }
     }
 }

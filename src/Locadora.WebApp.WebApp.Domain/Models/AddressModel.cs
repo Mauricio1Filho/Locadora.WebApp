@@ -9,8 +9,8 @@ namespace Locadora.WebApp.Domain.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         [ForeignKey("IdEndereco")]
-        public int IdEndereco { get; set; }        
-        public ClienteModel Cliente { get; set; }        
+        public int IdEndereco { get; set; }
+        public ClienteModel Cliente { get; set; }
         [Required]
         public string Endereco { get; set; }
         [Required]
@@ -22,6 +22,6 @@ namespace Locadora.WebApp.Domain.Models
         [Required]
         public string Cidade { get; set; }
         [Required]
-        public string Estado { get; set; }        
+        public string Estado { get; set; }
     }
 }
