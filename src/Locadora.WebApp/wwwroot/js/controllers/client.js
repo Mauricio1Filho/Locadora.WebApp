@@ -37,7 +37,7 @@
                 alert("Cliente cadastrado com sucesso!")
             },
             error: function (data) {
-                alert("");
+                alert("Erro ao cadastrar o cliente");
             }
         });
     })

@@ -10,9 +10,8 @@ namespace Locadora.WebApp.Controllers
         #region Views
         public ActionResult Index()
         {
-
-            return View ();
-        }
+            return View();
+        }                
         #endregion
 
         #region Injections
@@ -20,7 +19,7 @@ namespace Locadora.WebApp.Controllers
         private readonly IFilmeService _filmeService;
         private readonly IClienteService _clienteService;
 
-        public BookingController( ILocacaoService locacaoService, IFilmeService filmeService, IClienteService clienteService)
+        public BookingController(ILocacaoService locacaoService, IFilmeService filmeService, IClienteService clienteService)
         {
             _locacaoService = locacaoService;
             _filmeService = filmeService;

@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href='https://fonts.googleapis.com/css?family=Cutive' rel='stylesheet'>
+</head>
+<body>
+    <div class="box">
+        <img src="~/ezgif.com-gif-maker.gif" class="imgwrap" />
+    </div>
+    <div class="box">
+        <p class="font-google">Locação feita com sucesso</p>
+    </div>
+    <script>
+        setTimeout(function() {
+            window.location='/booking'
+        }, 5000);
+    </script>
+</body>
+</html>
+<style>
+    html {
+        background-color: rgba(225,244,229,255);
+    }
+    .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .imgwrap {
+        width: 50%;
+        margin: auto;
+    }
+        .imgwrap img {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin: auto;
+        }
+        .font-google{
+            font-family: 'Cutive'; 
+            font-size: 22px;
+        }
+</style>

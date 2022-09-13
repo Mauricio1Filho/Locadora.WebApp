@@ -21,7 +21,7 @@ namespace Locadora.WebApp.Infrastructure.Repositories
 
             if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(senha))
             {
-                return  _mainContext.Usuarios.FirstOrDefault(o => o.Login.Equals(usuario) && o.Senha.Equals(senha));                
+                return _mainContext.Usuarios.FirstOrDefault(o => o.Login.Equals(usuario) && o.Senha.Equals(senha));                
             }
             return default;
         }

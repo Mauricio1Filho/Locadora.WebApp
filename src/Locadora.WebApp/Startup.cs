@@ -75,15 +75,17 @@ namespace Locadora.WebApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "Login",
+                    pattern: "{controller=Login}/{action=Index}/");
+                endpoints.MapControllerRoute(
                     name: "Booking",
                     pattern: "{controller=Booking}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "Client",
                     pattern: "{controller=Client}/{action=Index}/{id?}");
-
                 endpoints.MapControllerRoute(
-                    name: "Login",
-                    pattern: "{controller=Login}/{action=Index}/");
+                    name: "Success",
+                    pattern: "{controller=Success}/{action=Index}/{id?}");
             });
         }
     }

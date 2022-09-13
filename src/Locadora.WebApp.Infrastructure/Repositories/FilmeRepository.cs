@@ -16,7 +16,7 @@ namespace Locadora.WebApp.Infrastructure.Repositories
         }
         public FilmeModel BuscarFilme(long idFilme)
         {
-            return  _mainContext.Filmes.FirstOrDefault(o => o.IdFilme == idFilme);
+            return _mainContext.Filmes.FirstOrDefault(o => o.IdFilme == idFilme);
         }
     }
 }
