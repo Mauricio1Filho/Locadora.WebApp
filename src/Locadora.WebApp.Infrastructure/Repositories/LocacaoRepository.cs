@@ -1,7 +1,6 @@
 ﻿using Locadora.WebApp.Domain.Models;
 using Locadora.WebApp.Domain.Repositories;
 using Locadora.WebApp.Infrastructure.Contexts;
-using System;
 using System.Linq;
 
 namespace Locadora.WebApp.Infrastructure.Repositories

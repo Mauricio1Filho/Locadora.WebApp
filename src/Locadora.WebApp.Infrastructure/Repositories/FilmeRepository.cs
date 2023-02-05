@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-using Locadora.WebApp.Domain.Models;
+﻿using Locadora.WebApp.Domain.Models;
 using Locadora.WebApp.Domain.Repositories;
 using Locadora.WebApp.Infrastructure.Contexts;
 using System.Linq;

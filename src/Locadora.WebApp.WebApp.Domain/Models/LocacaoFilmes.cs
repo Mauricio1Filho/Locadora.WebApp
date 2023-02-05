@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Locadora.WebApp.Domain.Models
+﻿namespace Locadora.WebApp.Domain.Models
 {
     public class LocacaoFilmes
     {

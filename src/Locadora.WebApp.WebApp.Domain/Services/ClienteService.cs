@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Locadora.WebApp.Domain.Interfaces;
+﻿using Locadora.WebApp.Domain.Interfaces;
 using Locadora.WebApp.Domain.Models;
 using Locadora.WebApp.Domain.Repositories;
 

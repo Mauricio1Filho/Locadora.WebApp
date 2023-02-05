@@ -9,8 +9,6 @@ using Locadora.WebApp.Domain.Repositories;
 using Locadora.WebApp.Domain.Services;
 using Locadora.WebApp.Infrastructure.Contexts;
 using Locadora.WebApp.Infrastructure.Repositories;
-using Locadora.WebApp.Domain.Models;
-using Locadora.WebApp.ViewModel;
 
 namespace Locadora.WebApp
 {
@@ -35,13 +33,13 @@ namespace Locadora.WebApp
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-            var connection = Configuration["ConnectionStrings:VannonDb"];
+            var connection = Configuration["ConnectionStrings:LocadoraDB"];
             services.AddDbContext<MainContext>(options =>
                 options.
                 UseMySql(connection));
 
             services.AddDbContext<MainContext>(
-                options => options.UseMySql("ConnectionStrings:VannonDb"));
+                options => options.UseMySql("ConnectionStrings:LocadoraDB"));
 
             services.AddTransient<IClienteRepository, ClienteRepository>();
             services.AddTransient<ILoginRepository, LoginRepository>();
@@ -59,11 +57,7 @@ namespace Locadora.WebApp
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+        {            
             app.UseDefaultFiles();
 
             app.UseStaticFiles();
