@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Locadora.WebApp.Infrastructure.Migrations
 {
     [DbContext(typeof(MainContext))]
-    [Migration("20220912005254_model")]
+    [Migration("20230205004903_model")]
     partial class model
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.28")
+                .HasAnnotation("ProductVersion", "3.1.32")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Locadora.WebApp.Domain.Models.AddressModel", b =>
@@ -139,21 +139,21 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                         new
                         {
                             IdFilme = 1,
-                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 62, DateTimeKind.Local).AddTicks(2450),
+                            DataCriacao = new DateTime(2023, 2, 4, 21, 49, 2, 792, DateTimeKind.Local).AddTicks(8406),
                             FilmeIdGenero = 1,
                             Titulo = "IT: A Coisa"
                         },
                         new
                         {
                             IdFilme = 2,
-                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 62, DateTimeKind.Local).AddTicks(2910),
+                            DataCriacao = new DateTime(2023, 2, 4, 21, 49, 2, 792, DateTimeKind.Local).AddTicks(9044),
                             FilmeIdGenero = 2,
                             Titulo = "John Wick 3: Parabellum"
                         },
                         new
                         {
                             IdFilme = 3,
-                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 62, DateTimeKind.Local).AddTicks(2933),
+                            DataCriacao = new DateTime(2023, 2, 4, 21, 49, 2, 792, DateTimeKind.Local).AddTicks(9103),
                             FilmeIdGenero = 3,
                             Titulo = "O Homem do Norte"
                         });
@@ -180,19 +180,19 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                         new
                         {
                             IdGenero = 1,
-                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 61, DateTimeKind.Local).AddTicks(1414),
+                            DataCriacao = new DateTime(2023, 2, 4, 21, 49, 2, 791, DateTimeKind.Local).AddTicks(5066),
                             Descricao = "Terror"
                         },
                         new
                         {
                             IdGenero = 2,
-                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 61, DateTimeKind.Local).AddTicks(1911),
+                            DataCriacao = new DateTime(2023, 2, 4, 21, 49, 2, 791, DateTimeKind.Local).AddTicks(5724),
                             Descricao = "Ação"
                         },
                         new
                         {
                             IdGenero = 3,
-                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 61, DateTimeKind.Local).AddTicks(1926),
+                            DataCriacao = new DateTime(2023, 2, 4, 21, 49, 2, 791, DateTimeKind.Local).AddTicks(5742),
                             Descricao = "Drama"
                         });
                 });
@@ -263,7 +263,7 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                         new
                         {
                             IdUsuario = 1,
-                            DataCriacao = new DateTime(2022, 9, 11, 21, 52, 54, 57, DateTimeKind.Local).AddTicks(7276),
+                            DataCriacao = new DateTime(2023, 2, 4, 21, 49, 2, 787, DateTimeKind.Local).AddTicks(4511),
                             Login = "admin@admin.com",
                             Nome = "admin",
                             Senha = "admin"

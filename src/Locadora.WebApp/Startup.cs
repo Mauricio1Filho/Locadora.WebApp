@@ -33,13 +33,8 @@ namespace Locadora.WebApp
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-            var connection = Configuration["ConnectionStrings:LocadoraDB"];
-            services.AddDbContext<MainContext>(options =>
-                options.
-                UseMySql(connection));
-
-            services.AddDbContext<MainContext>(
-                options => options.UseMySql("ConnectionStrings:LocadoraDB"));
+            var connection = Configuration.GetConnectionString("LocadoraDb");
+            services.AddDbContext<MainContext>(options => options.UseMySql(connection));
 
             services.AddTransient<IClienteRepository, ClienteRepository>();
             services.AddTransient<ILoginRepository, LoginRepository>();
@@ -52,12 +47,12 @@ namespace Locadora.WebApp
             services.AddScoped<IFilmeService, FilmeService>();
             services.AddScoped<ILocacaoService, LocacaoService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {            
+        public void Configure(IApplicationBuilder app)
+        {
             app.UseDefaultFiles();
 
             app.UseStaticFiles();

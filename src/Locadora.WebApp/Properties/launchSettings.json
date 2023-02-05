@@ -6,7 +6,7 @@
       "applicationUrl": "http://localhost:5100",
       "environmentVariables": {
 
-        "ASPNETCORE_ENVIRONMENT": "qa"
+        "ASPNETCORE_ENVIRONMENT": "prod"
       }
     },
     "Locadora.WebApp.Dev": {

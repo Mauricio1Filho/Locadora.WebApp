@@ -171,30 +171,30 @@ namespace Locadora.WebApp.Infrastructure.Migrations
                 columns: new[] { "IdGenero", "DataCriacao", "Descricao" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 9, 11, 21, 52, 54, 61, DateTimeKind.Local).AddTicks(1414), "Terror" },
-                    { 2, new DateTime(2022, 9, 11, 21, 52, 54, 61, DateTimeKind.Local).AddTicks(1911), "Ação" },
-                    { 3, new DateTime(2022, 9, 11, 21, 52, 54, 61, DateTimeKind.Local).AddTicks(1926), "Drama" }
+                    { 1, new DateTime(2023, 2, 4, 21, 49, 2, 791, DateTimeKind.Local).AddTicks(5066), "Terror" },
+                    { 2, new DateTime(2023, 2, 4, 21, 49, 2, 791, DateTimeKind.Local).AddTicks(5724), "Ação" },
+                    { 3, new DateTime(2023, 2, 4, 21, 49, 2, 791, DateTimeKind.Local).AddTicks(5742), "Drama" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "IdUsuario", "DataCriacao", "Login", "Nome", "Senha" },
-                values: new object[] { 1, new DateTime(2022, 9, 11, 21, 52, 54, 57, DateTimeKind.Local).AddTicks(7276), "admin@admin.com", "admin", "admin" });
+                values: new object[] { 1, new DateTime(2023, 2, 4, 21, 49, 2, 787, DateTimeKind.Local).AddTicks(4511), "admin@admin.com", "admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "Filmes",
                 columns: new[] { "IdFilme", "DataCriacao", "FilmeIdGenero", "Titulo" },
-                values: new object[] { 1, new DateTime(2022, 9, 11, 21, 52, 54, 62, DateTimeKind.Local).AddTicks(2450), 1, "IT: A Coisa" });
+                values: new object[] { 1, new DateTime(2023, 2, 4, 21, 49, 2, 792, DateTimeKind.Local).AddTicks(8406), 1, "IT: A Coisa" });
 
             migrationBuilder.InsertData(
                 table: "Filmes",
                 columns: new[] { "IdFilme", "DataCriacao", "FilmeIdGenero", "Titulo" },
-                values: new object[] { 2, new DateTime(2022, 9, 11, 21, 52, 54, 62, DateTimeKind.Local).AddTicks(2910), 2, "John Wick 3: Parabellum" });
+                values: new object[] { 2, new DateTime(2023, 2, 4, 21, 49, 2, 792, DateTimeKind.Local).AddTicks(9044), 2, "John Wick 3: Parabellum" });
 
             migrationBuilder.InsertData(
                 table: "Filmes",
                 columns: new[] { "IdFilme", "DataCriacao", "FilmeIdGenero", "Titulo" },
-                values: new object[] { 3, new DateTime(2022, 9, 11, 21, 52, 54, 62, DateTimeKind.Local).AddTicks(2933), 3, "O Homem do Norte" });
+                values: new object[] { 3, new DateTime(2023, 2, 4, 21, 49, 2, 792, DateTimeKind.Local).AddTicks(9103), 3, "O Homem do Norte" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clientes_ClienteIdContato",
