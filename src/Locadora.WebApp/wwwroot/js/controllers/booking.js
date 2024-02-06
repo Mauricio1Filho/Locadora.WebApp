@@ -17,7 +17,7 @@
                 'Content-Type': 'application/json'
             },
             success: function (data) {
-                if (data) {                    
+                if (data) {
                     window.location.href = "/success";
                 }
             }
@@ -40,7 +40,7 @@ $(document).ready(function () {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            success: function (data) {                
+            success: function (data) {
                 if (data) {
                     $("#inputNome").val(data.nome)
                     $("#inputContatoEmail").val(data.contato.email);
@@ -49,7 +49,7 @@ $(document).ready(function () {
                     $("#inputEnderecoNumero").val(data.endereco.numero);
                     $("#inputEnderecoBairro").val(data.endereco.bairro);
                     $("#inputEnderecoCEP").val(data.endereco.cep);
-                    $("#inputEnderecoCidade").val(data.endereco.cidade);                    
+                    $("#inputEnderecoCidade").val(data.endereco.cidade);
                 }
                 else {
                     alert("Campos nao preenchidos corretamente")

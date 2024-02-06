@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locadora.WebApp.Infrastruct
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locadora.WebApp", "src\Locadora.WebApp\Locadora.WebApp.csproj", "{4D3BA045-3B4C-4348-B3D0-874DED3BA2DE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{CF9FF9E0-21EE-4D32-BD6C-AF8294AD1FB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.WebApp.Test", "src\Locadora.WebApp.Test\Locadora.WebApp.Test.csproj", "{2D55A060-C427-4F05-BF70-CA7C1254CC6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,10 @@ Global
 		{4D3BA045-3B4C-4348-B3D0-874DED3BA2DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D3BA045-3B4C-4348-B3D0-874DED3BA2DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D3BA045-3B4C-4348-B3D0-874DED3BA2DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D55A060-C427-4F05-BF70-CA7C1254CC6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D55A060-C427-4F05-BF70-CA7C1254CC6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D55A060-C427-4F05-BF70-CA7C1254CC6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D55A060-C427-4F05-BF70-CA7C1254CC6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +47,7 @@ Global
 		{75060303-0138-4479-9BDE-6D6C72C4662E} = {EB14ACF1-4525-4697-9AF8-7F37B9F525E1}
 		{C6725893-F361-4EB6-9981-1C5774541E31} = {EB14ACF1-4525-4697-9AF8-7F37B9F525E1}
 		{4D3BA045-3B4C-4348-B3D0-874DED3BA2DE} = {E5DC9BB5-EFB9-46E2-9C84-E4537E00E1F9}
+		{2D55A060-C427-4F05-BF70-CA7C1254CC6F} = {CF9FF9E0-21EE-4D32-BD6C-AF8294AD1FB6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9C63C72E-E7BB-44CE-AED3-3E1AF2DA0845}

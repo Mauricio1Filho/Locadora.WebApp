@@ -14,7 +14,7 @@ namespace Locadora.WebApp.Domain.Services
         }
         public FilmeModel BuscarFilme(long idFilme)
         {
-            return  _filmeRepository.BuscarFilme(idFilme);
+            return _filmeRepository.BuscarFilme(idFilme);
         }
     }
 }
