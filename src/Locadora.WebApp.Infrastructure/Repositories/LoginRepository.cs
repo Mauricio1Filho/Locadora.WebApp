@@ -14,14 +14,8 @@ namespace Locadora.WebApp.Infrastructure.Repositories
             _mainContext = mainContext;
         }
 
-        public UsuarioModel Logar(string usuario, string senha)
-        {
+        public UsuarioModel Logar(string usuario, string senha) =>
+            _mainContext.Usuarios.FirstOrDefault(o => o.Login.Equals(usuario) && o.Senha.Equals(senha));
 
-            if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(senha))
-            {
-                return _mainContext.Usuarios.FirstOrDefault(o => o.Login.Equals(usuario) && o.Senha.Equals(senha));                
-            }
-            return default;
-        }
     }
 }
